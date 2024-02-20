@@ -1,0 +1,24 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"taf_line": {
+				"__TYPE__": "FieldContent",
+				"value": "torn",
+				"type": "Text"
+			},
+			"first_name": {
+				"__TYPE__": "FieldContent",
+				"value": "triangle",
+				"type": "Text"
+			},
+			"last_name": {
+				"__TYPE__": "FieldContent",
+				"value": "exact",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]
