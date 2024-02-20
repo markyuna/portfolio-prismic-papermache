@@ -135,38 +135,40 @@ export default function ContentList({
 
     return (
     <div ref={component}>
-        <ul className="grid border-b border-b-slate-100">
-        {items.map((item, index) => (
+        <ul 
+            onMouseLeave={onMouseLeave}
+            className="grid border-b border-b-slate-100"
+        >
+        {[...items, ...items, ...items, ...items].map((item, index) => (
             <>
             {isFilled.keyText(item.data.title) && (
                 <li 
                     key={index} 
-                    className="list-item opacity-0"
-                    onMouseEnter={() => onMouseEnter(index)}
-                    onMouseLeave={onMouseLeave}
                     ref={(el) => (itemsRef.current[index] = el)}
+                    onMouseEnter={() => onMouseEnter(index)}
+                    className="list-item opacity-0"
                 >
-                <Link
-                href={urlPrefix + "/" + item.uid}
-                className="flex flex-col justify-between border-t border-t-slate-100 py-10  text-slate-200 md:flex-row "
-                aria-label={item.data.title}
-                >
-                    <div className="flex flex-col">
-                        <span className="text-3xl font-bold">
-                            {item.data.title}
-                        </span>
-                        <div className="flex gap-3 text-yellow-400 text-lg font-bold">
-                        {item.tags.map((tag, index) => (
-                            <span key={index}>{tag}</span>
-                            ))}
+                    <Link
+                    href={urlPrefix + "/" + item.uid}
+                    className="flex flex-col justify-between border-t border-t-slate-100 py-10  text-slate-200 md:flex-row "
+                    aria-label={item.data.title}
+                    >
+                        <div className="flex flex-col">
+                            <span className="text-3xl font-bold">
+                                {item.data.title}
+                            </span>
+                            <div className="flex gap-3 text-yellow-400 text-lg font-bold">
+                            {item.tags.map((tag, index) => (
+                                <span key={index}>{tag}</span>
+                                ))}
+                            </div>
                         </div>
-                    </div>
-                    <span className="ml-auto flex items-center gap-2 text-xl font-medium md:ml-0">
-                        {viewMoreText} <MdArrowOutward />
-                    </span>
-                </Link>
+                        <span className="ml-auto flex items-center gap-2 text-xl font-medium md:ml-0">
+                            {viewMoreText} <MdArrowOutward />
+                        </span>
+                    </Link>
                 </li>
-                )}
+            )}
             </>
         ))}
         </ul>

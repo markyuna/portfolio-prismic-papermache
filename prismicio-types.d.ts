@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type BlogPostDocumentDataSlicesSlice = TextBlockSlice;
+type BlogPostDocumentDataSlicesSlice = ContentIndexSlice | TextBlockSlice;
 
 /**
  * Content for Blog Post documents
@@ -403,15 +403,15 @@ interface SettingsDocumentData {
   cta_label: prismic.KeyTextField;
 
   /**
-   * Twitter Link field in *Settings*
+   * Instagram field in *Settings*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
-   * - **API ID Path**: settings.twitter_link
+   * - **API ID Path**: settings.instagram_link
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  twitter_link: prismic.LinkField;
+  instagram_link: prismic.LinkField;
 
   /**
    * GitHub Link field in *Settings*

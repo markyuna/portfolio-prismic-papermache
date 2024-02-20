@@ -52,11 +52,12 @@
           "placeholder": ""
         }
       },
-      "twitter_link": {
+      "instagram_link": {
         "type": "Link",
         "config": {
-          "label": "Twitter Link",
+          "label": "Instagram",
           "placeholder": "",
+          "allowTargetBlank": false,
           "select": null
         }
       },

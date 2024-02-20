@@ -45,7 +45,7 @@ export default function NavBar({
           >
             <MdClose />
           </button>
-          {settings.data.nav_item.map(({ link, label }, index) => (
+          {settings.data.nav_items.map(({ link, label }, index) => (
             <React.Fragment key={label}>
               <li className="first:mt-8">
                 <PrismicNextLink
@@ -71,7 +71,7 @@ export default function NavBar({
                   <span className="relative">{label}</span>
                 </PrismicNextLink>
               </li>
-              {index < settings.data.nav_item.length - 1 && (
+              {index < settings.data.nav_items.length - 1 && (
                 <span
                   className="hidden text-4xl font-thin leading-[0] text-slate-400 md:inline"
                   aria-hidden="true"
@@ -116,7 +116,7 @@ function DesktopMenu({
 }) {
   return (
     <div className="relative z-50 hidden flex-row items-center gap-1 bg-transparent py-0 md:flex">
-      {settings.data.nav_item.map(({ link, label }, index) => (
+      {settings.data.nav_items.map(({ link, label }, index) => (
         <React.Fragment key={label}>
           <li>
             <PrismicNextLink
@@ -139,7 +139,7 @@ function DesktopMenu({
               <span className="relative">{label}</span>
             </PrismicNextLink>
           </li>
-          {index < settings.data.nav_item.length - 1 && (
+          {index < settings.data.nav_items.length - 1 && (
             <span
               className="hidden text-4xl font-thin leading-[0] text-slate-400 md:inline"
               aria-hidden="true"
