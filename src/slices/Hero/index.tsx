@@ -20,6 +20,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
   useEffect(() => {
     let ctx = gsap.context(() => {
       // create as many GSAP animations and/or ScrollTriggers here as you want...
+    
       gsap
         .timeline()
         .fromTo(
@@ -33,7 +34,10 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
             ease: "elastic.out(1,0.3)",
             duration: 1,
             transformOrigin: "left top",
-            stagger: { each: 0.1, from: "random" },
+            stagger: { 
+              each: 0.1, 
+              from: "random"
+            },
           },
         )
         .fromTo(
@@ -89,7 +93,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
               {renderLetters(slice.primary.last_name, "last")}
             </span>
           </h1>
-          <span className="job-title block bg-gradient-to-tr from-yellow-500 via-yellow-200 to-yellow-500 bg-clip-text text-2xl font-bold uppercase tracking-[.2em] text-transparent opacity-0 md:text-4xl">
+          <span className="job-title block bg-gradient-to-tr from-yellow-500 via-yellow-200 to-yellow-500 bg-clip-text text-2xl font-bold uppercase tracking-[.2em] text-transparent opacity-100 md:text-4xl">
             {slice.primary.tag_line}
           </span>
         </div>

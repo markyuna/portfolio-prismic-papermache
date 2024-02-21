@@ -3,11 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"taf_line": {
-				"__TYPE__": "FieldContent",
-				"value": "torn",
-				"type": "Text"
-			},
 			"first_name": {
 				"__TYPE__": "FieldContent",
 				"value": "triangle",
@@ -17,6 +12,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "exact",
 				"type": "Text"
+			},
+			"tag_line": {
+				"__TYPE__": "FieldContent",
+				"type": "Text",
+				"value": "Creative artist"
 			}
 		},
 		"items": []

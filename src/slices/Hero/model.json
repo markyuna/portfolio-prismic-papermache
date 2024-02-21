@@ -26,7 +26,7 @@
             "placeholder": ""
           }
         },
-        "taf_line": {
+        "tag_line": {
           "type": "Text",
           "config": {
             "label": "Tag Line",

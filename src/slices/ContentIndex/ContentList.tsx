@@ -22,12 +22,14 @@ export default function ContentList({
   fallbackItemImage,
   viewMoreText = "Read More",
 }: ContentListProps) {
+  
   const component = useRef(null);
   const itemsRef = useRef<Array<HTMLLIElement | null>>([]);
 
   const revealRef = useRef(null);
   const [currentItem, setCurrentItem] = useState<null | number>(null);
   const [hovering, setHovering] = useState(false);
+  
   const lastMousePos = useRef({ x: 0, y: 0 });
 
   const urlPrefix = contentType === "Blog" ? "/blog" : "/project";
@@ -118,8 +120,8 @@ export default function ContentList({
 
     return asImageSrc(image, {
       fit: "crop",
-      w: 220,
-      h: 320,
+      w: 120,
+      h: 220,
       exp: -10,
     });
   });
@@ -135,18 +137,15 @@ export default function ContentList({
 
     return (
     <div ref={component}>
-        <ul 
-            onMouseLeave={onMouseLeave}
-            className="grid border-b border-b-slate-100"
-        >
-        {[...items, ...items, ...items, ...items].map((item, index) => (
+        <ul onMouseLeave={onMouseLeave} className="grid border-b border-b-slate-100">
+        {items.map((item, index) => (
             <>
             {isFilled.keyText(item.data.title) && (
                 <li 
                     key={index} 
+                    className="list-item opacity-0"
                     ref={(el) => (itemsRef.current[index] = el)}
                     onMouseEnter={() => onMouseEnter(index)}
-                    className="list-item opacity-0"
                 >
                     <Link
                     href={urlPrefix + "/" + item.uid}
