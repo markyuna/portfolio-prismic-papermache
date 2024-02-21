@@ -3,6 +3,7 @@
         "clsx",
         "gsap",
         "Prismic",
-        "prismicio"
+        "prismicio",
+        "yoyo"
     ]
 }

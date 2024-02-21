@@ -25,8 +25,8 @@
             "label": "Content Type",
             "placeholder": "",
             "options": [
-              "1",
-              "2"
+              "Blog",
+              "Project"
             ]
           }
         },

@@ -5,21 +5,24 @@ import ContentList from "./ContentList";
 import Bounded from "@/components/Bounded";
 import Heading from "@/components/Heading";
 /**
- * Props for `ContentIndex`.
+ * Props for `BlogPostIndex`.
  */
-export type ContentIndexProps =  SliceComponentProps<Content.ContentIndexSlice>;
+export type ContentIndexProps =
+  SliceComponentProps<Content.ContentIndexSlice>;
 
 /**
  * Component for "ContentIndex" Slices.
  */
 const ContentIndex = async ({
   slice,
-}: ContentIndexProps):Promise<JSX.Element> => {
+}: ContentIndexProps): Promise<JSX.Element> => {
   const client = createClient();
   const blogPosts = await client.getAllByType("blog_post");
   const projects = await client.getAllByType("project");
 
-  const items = contentType === "Blog" ? blogPosts : projects;
+  const contentType = slice.primary.content_type || "Blog";
+
+  const items = slice.primary.content_type === "Blog" ? blogPosts : projects;
 
   return (
     <Bounded
@@ -36,7 +39,7 @@ const ContentIndex = async ({
       )}
       <ContentList
         items={items}
-        contentType={slice.primary.content_type}
+        contentType={contentType}
         viewMoreText={slice.primary.view_more_text}
         fallbackItemImage={slice.primary.fallback_item_image}
       />
