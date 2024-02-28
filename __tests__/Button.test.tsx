@@ -1,10 +1,8 @@
 // Button.test.tsx
-import '@testing-library/jest-dom/extend-expect';
-
+import '@testing-library/jest-dom'
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import Button from "../src/components/Button";
-import { KeyTextField, LinkField } from "@prismicio/client";
 
 describe("Button component", () => {
   test("renders button with correct label", () => {
