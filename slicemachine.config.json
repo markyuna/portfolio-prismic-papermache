@@ -2,5 +2,5 @@
   "repositoryName": "portfolio-prismic-papermache",
   "adapter": "@slicemachine/adapter-next",
   "libraries": ["./src/slices"],
-  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
+  "localSliceSimulatorURL": "http://portfolio-prismic-papermache.vercel.app/slice-simulator"
 }

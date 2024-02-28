@@ -232,14 +232,17 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-type ProjectDocumentDataSlicesSlice = ImageBlockSlice | TextBlockSlice;
+type ProjectDocumentDataSlicesSlice =
+  | ImageTrasformSlice
+  | ImageBlockSlice
+  | TextBlockSlice;
 
 /**
- * Content for Project documents
+ * Content for Sculptures documents
  */
 interface ProjectDocumentData {
   /**
-   * Title field in *Project*
+   * Title field in *Sculptures*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -250,7 +253,7 @@ interface ProjectDocumentData {
   title: prismic.KeyTextField;
 
   /**
-   * Date field in *Project*
+   * Date field in *Sculptures*
    *
    * - **Field Type**: Date
    * - **Placeholder**: *None*
@@ -261,7 +264,7 @@ interface ProjectDocumentData {
   date: prismic.DateField;
 
   /**
-   * Hover Image field in *Project*
+   * Hover Image field in *Sculptures*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -272,7 +275,7 @@ interface ProjectDocumentData {
   hover_image: prismic.ImageField<never>;
 
   /**
-   * Slice Zone field in *Project*
+   * Slice Zone field in *Sculptures*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
@@ -281,7 +284,7 @@ interface ProjectDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<ProjectDocumentDataSlicesSlice> /**
-   * Meta Description field in *Project*
+   * Meta Description field in *Sculptures*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A brief summary of the page
@@ -292,7 +295,7 @@ interface ProjectDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
-   * Meta Image field in *Project*
+   * Meta Image field in *Sculptures*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -303,7 +306,7 @@ interface ProjectDocumentData {
   meta_image: prismic.ImageField<never>;
 
   /**
-   * Meta Title field in *Project*
+   * Meta Title field in *Sculptures*
    *
    * - **Field Type**: Text
    * - **Placeholder**: A title of the page used for social media and search engines
@@ -315,7 +318,7 @@ interface ProjectDocumentData {
 }
 
 /**
- * Project document from Prismic
+ * Sculptures document from Prismic
  *
  * - **API ID**: `project`
  * - **Repeatable**: `true`
@@ -859,6 +862,61 @@ export type ImageBlockSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *ImageTrasform → Primary*
+ */
+export interface ImageTrasformSliceDefaultPrimary {
+  /**
+   * Original Image field in *ImageTrasform → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_trasform.primary.original_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  original_image: prismic.ImageField<never>;
+
+  /**
+   * Transformed Image field in *ImageTrasform → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_trasform.primary.transformed_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  transformed_image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for ImageTrasform Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageTrasformSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ImageTrasformSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ImageTrasform*
+ */
+type ImageTrasformSliceVariation = ImageTrasformSliceDefault;
+
+/**
+ * ImageTrasform Shared Slice
+ *
+ * - **API ID**: `image_trasform`
+ * - **Description**: ImageTrasform
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageTrasformSlice = prismic.SharedSlice<
+  "image_trasform",
+  ImageTrasformSliceVariation
+>;
+
+/**
  * Primary content in *TechList → Primary*
  */
 export interface TechListSliceDefaultPrimary {
@@ -1020,6 +1078,10 @@ declare module "@prismicio/client" {
       ImageBlockSliceDefaultPrimary,
       ImageBlockSliceVariation,
       ImageBlockSliceDefault,
+      ImageTrasformSlice,
+      ImageTrasformSliceDefaultPrimary,
+      ImageTrasformSliceVariation,
+      ImageTrasformSliceDefault,
       TechListSlice,
       TechListSliceDefaultPrimary,
       TechListSliceDefaultItem,

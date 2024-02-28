@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ImageField } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import clsx from "clsx";
-// import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
+import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
 
 export default function Avatar({
   image,
@@ -15,7 +15,7 @@ export default function Avatar({
   className?: string;
 }) {
   const component = useRef(null);
-//   const prefersReducedMotion = usePrefersReducedMotion();
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -28,7 +28,7 @@ export default function Avatar({
         {
           scale: 1,
           opacity: 1,
-        //   duration: prefersReducedMotion ? 0 : 1.3,
+          duration: prefersReducedMotion ? 0 : 1.3,
           ease: "power3.inOut",
         },
       );
@@ -70,7 +70,7 @@ export default function Avatar({
       };
     }, component);
     return () => ctx.revert(); // cleanup!
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <div ref={component} className={clsx("relative h-full w-full", className)}>
@@ -81,7 +81,7 @@ export default function Avatar({
         <PrismicNextImage
           field={image}
           className="avatar-image h-full w-full object-fill"
-          imgixParams={{ q: 90 }}
+          imgixParams={{ q: 80 }}
         />
         <div className="highlight absolute inset-0 hidden w-full scale-110 bg-gradient-to-tr from-transparent via-white to-transparent opacity-0 md:block"></div>
       </div>

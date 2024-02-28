@@ -13,5 +13,5 @@ export function formatDate(dateStr: DateField): string {
   };
 
   // Format the date
-  return new Intl.DateTimeFormat("en-US", options).format(date);
+  return new Intl.DateTimeFormat("fr-FR", options).format(date);
 }

@@ -11,20 +11,7 @@ export default async function Header() {
   return (
     <header className="top-0 z-50 mx-auto max-w-7xl md:sticky md:top-4">
       <NavBar settings={settings} />
-      {/* <nav>
-        <ul>
-          <li>
-            <Link href="/" aria-label="Home">
-              {settings.data.name}
-            </Link>
-          </li>
-          {settings.data.nav_items.map(({link, label}, index) => (
-            <li key={index}>
-              <PrismicNextLink field={link}>{label}</PrismicNextLink>
-            </li>
-          ))}
-        </ul>
-      </nav> */}
+     
     </header>
   );
 }

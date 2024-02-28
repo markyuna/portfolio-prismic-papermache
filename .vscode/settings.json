@@ -4,6 +4,7 @@
         "gsap",
         "Prismic",
         "prismicio",
+        "slicemachine",
         "yoyo"
     ]
 }
