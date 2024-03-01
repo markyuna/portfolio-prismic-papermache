@@ -15,10 +15,10 @@ export default function ContentBody({
   return (
     <Bounded as="article"  >
       <div className="rounded-2xl border-2 border-slate-800 bg-slate-900 px-4 py-10 md:px-8 md:py-20">
-        <Heading as="h1" size="md">{page.data.title}</Heading>
-        <div className="flex gap-4 text-yellow-400">
+        <Heading as="h1" size="sm">{page.data.title}</Heading>
+        <div className="flex gap-2 text-yellow-400">
           {page.tags.map((tag, index) => (
-            <span key={index} className="text-xl font-bold">
+            <span key={index} className="text-lg font-bold">
               {tag}
             </span>
           ))}
