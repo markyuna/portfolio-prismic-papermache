@@ -132,7 +132,6 @@ export default function ContentList({
   }, [contentImages]);
 
   return (
-    <>
       <ul
         ref={component}
         className="grid border-b border-b-slate-100"
@@ -177,6 +176,5 @@ export default function ContentList({
           ref={revealRef}
         ></div>
       </ul>
-    </>
   );
 }

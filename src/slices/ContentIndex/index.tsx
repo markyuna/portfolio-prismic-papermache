@@ -29,11 +29,11 @@ const ContentIndex = async ({
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <Heading size="xl" className="mb-8 text-center">
+      <Heading size="md" className="mb-8 text-center">
         {slice.primary.heading}
       </Heading>
       {isFilled.richText(slice.primary.description) && (
-        <div className="prose prose-xl prose-invert mb-10">
+        <div className="prose prose-md prose-invert mb-10">
           <PrismicRichText field={slice.primary.description} />
         </div>
       )}
