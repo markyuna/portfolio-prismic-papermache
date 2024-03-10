@@ -72,7 +72,7 @@ export default function CookieOptions() {
         aria-labelledby="cookie-settings"
       >
         <div className="cookie-parameter">
-          <input
+          {/* <input
             disabled={true}
             checked={true}
             aria-labelledby="Funktion-cookies"
@@ -81,15 +81,15 @@ export default function CookieOptions() {
             className="cookie-parameter__input cookie-parameter__input-default"
             name="Function"
             tabIndex={0}
-          />
-          <label
+          /> */}
+          {/* <label
             aria-labelledby="Funktion-cookies"
             className="cookie-parameter__label text-xs"
             htmlFor="Function"
           ></label>
           <span className="cookie-parameter__name" id="Funktion-cookies">
             {data.cookieDetails.default}
-          </span>
+          </span> */}
         </div>
         {renderCookieOptions()}
       </div>

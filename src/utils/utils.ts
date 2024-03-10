@@ -5,8 +5,8 @@ export const getRightLanguage = () => {
     userLanguage = "ENGLISH";
   } else if (browserLang.startsWith("es")) {
     userLanguage = "SPANISH";
-  } else if (browserLang.startsWith("de")) {
-    userLanguage = "GERMAN";
+  } else if (browserLang.startsWith("fr")) {
+    userLanguage = "FRENCH";
   } else {
     userLanguage = "ENGLISH"; // fallback to English if browser language is not supported
   }

@@ -19,7 +19,7 @@ export const LanguageSwitcher = () => {
       >
         <option value="ENGLISH">🇺🇸</option>
         <option value="SPANISH">🇪🇸</option>
-        <option value="GERMAN">🇩🇪</option>
+        <option value="FRENCH">🇫🇷</option>
       </select>
     </div>
   )

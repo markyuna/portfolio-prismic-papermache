@@ -14,8 +14,8 @@ import { getRightLanguage } from '../utils/utils'
 
 export enum CookieType {
   // Add the cookie labels
-  YOUTUBE = 'cookie-yt',
-  GOOGLE_MAPS = 'cookie-gm',
+  // YOUTUBE = 'cookie-yt',
+  // GOOGLE_MAPS = 'cookie-gm',
   GOOGLE_ANALYTICS = 'cookie-ga',
 }
 
@@ -115,7 +115,6 @@ export const CookieContextProvider = ({ children }: ProviderProps) => {
     setHasUserInteracted,
     // Add other cookie states and related setter functions here
   }
-
   return (
     // @ts-expect-error
     <CookieContext.Provider value={value}>{children}</CookieContext.Provider>

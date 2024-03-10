@@ -16,7 +16,7 @@ export default function CookieFooter({
       </a>
       <button
         className="cookie__details-link"
-        aria-label="Cookie Details öffnen"
+        aria-label="Ouvrir les détails du cookie"
         onClick={() => setIsCookieDetailsOpen(true)}
       >
         {data.cookieFooter.moreDetails}
