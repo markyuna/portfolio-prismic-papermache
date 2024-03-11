@@ -107,8 +107,8 @@ export default function CookieOptions() {
         <button
           tabIndex={0}
           type="button"
-          title="Aktuelle Cookie-Auswahl speichern"
-          aria-label="Aktuelle Cookie-Auswahl speichern"
+          title="Enregistrer la sélection actuelle de cookies"
+          aria-label="Enregistrer la sélection actuelle de cookies"
           className="btn cookie-accept"
           onClick={handleAccept}
         >

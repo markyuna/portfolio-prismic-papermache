@@ -17,15 +17,15 @@ export default function Debug() {
 
   const [isDebugOpened, setIsDebugOpened] = useState(false)
 
-  const toggleYoutubeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCookie(CookieType.YOUTUBE, event.target.checked)
-  }
+  // const toggleYoutubeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setCookie(CookieType.YOUTUBE, event.target.checked)
+  // }
 
-  const toggleGoogleMapsChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    setCookie(CookieType.GOOGLE_MAPS, event.target.checked)
-  }
+  // const toggleGoogleMapsChange = (
+  //   event: React.ChangeEvent<HTMLInputElement>
+  // ) => {
+  //   setCookie(CookieType.GOOGLE_MAPS, event.target.checked)
+  // }
 
   const toggleGoogleAnalyticsChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -52,8 +52,8 @@ export default function Debug() {
           <h3 className="text-xl mb-2">Cookies</h3>
           <hr className="bg-black h-[5px] my-2" />
           <ul>
-            <li>YouTube Cookie: {cookies['cookie-yt']?.toString()}</li>
-            <li>Google Maps Cookie: {cookies['cookie-gm']?.toString()}</li>
+            {/* <li>YouTube Cookie: {cookies['cookie-yt']?.toString()}</li> */}
+            {/* <li>Google Maps Cookie: {cookies['cookie-gm']?.toString()}</li> */}
             <li>Google Analytics: {cookies['cookie-ga']?.toString()}</li>
             <li>
               Has User Interacted at least once?:{' '}
@@ -63,22 +63,22 @@ export default function Debug() {
           <h3 className="text-xl my-2">Setters</h3>
           <hr className="bg-black h-[5px] my-2" />
           <div>
-            <label>
+            {/* <label>
               <input
                 type="checkbox"
                 defaultChecked={cookies['cookie-yt']?.toString() === 'true'}
                 onChange={toggleYoutubeChange}
               />
               YouTube
-            </label>
-            <label>
+            </label> */}
+            {/* <label>
               <input
                 type="checkbox"
                 defaultChecked={cookies['cookie-gm']?.toString() === 'true'}
                 onChange={toggleGoogleMapsChange}
               />
               Google Maps
-            </label>
+            </label> */}
             <label>
               <input
                 type="checkbox"
