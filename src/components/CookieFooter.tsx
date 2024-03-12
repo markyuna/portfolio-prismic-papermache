@@ -11,9 +11,9 @@ export default function CookieFooter({
       <a href="/datenschutz/" title="Datenschutz" tabIndex={0}>
         {data.cookieFooter.dataProtection}
       </a>
-      <a href="/impressum/" title="Impressum" tabIndex={0}>
+      {/* <a href="/impressum/" title="Impressum" tabIndex={0}>
         {data.cookieFooter.imprint}
-      </a>
+      </a> */}
       <button
         className="cookie__details-link"
         aria-label="Ouvrir les détails du cookie"
