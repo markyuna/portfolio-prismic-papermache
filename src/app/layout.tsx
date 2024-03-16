@@ -12,8 +12,12 @@ import Cookie from "@/components/Cookie";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import Dalle3Image from "@/components/Dalle3Image";
+
+export const siteTitle = "Next.js + Prismic";
 
 import { CookieContextProvider } from '../context/CookieContext';
+
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -41,6 +45,7 @@ export default function RootLayout({
       <body className={clsx(urbanist.className, "relative min-h-screen")}>
         <Header />
         {children}
+        
         <div className="background-gradient absolute inset-0 -z-50 max-h-screen" />
         <div className="pointer-events-none absolute inset-0 -z-40 h-full bg-[url('/noisetexture.jpg')] opacity-20 mix-blend-soft-light"></div>
         <div className="page">
@@ -48,6 +53,7 @@ export default function RootLayout({
           {/* <Debug /> */}
           <Cookie />
         </div>
+        <Dalle3Image />
         <Footer />
         <PrismicPreview repositoryName={repositoryName} />
       </body>

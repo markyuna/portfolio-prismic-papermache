@@ -12,6 +12,17 @@ const nextConfig = {
             eagerEsModules: false,
         },
     },
+    images: {
+        remotePatterns : [
+            {
+                protocol: 'https',
+                hostname: 'oaidalleapiprodscus.blob.core.windows.net',
+                port: '',
+                pathname: '/**',
+            },
+        ],
+        domains: ['images.unsplash.com'],
+    }
 };
 
 export default nextConfig;
