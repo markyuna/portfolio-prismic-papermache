@@ -96,12 +96,13 @@ export const CookieContextProvider = ({ children }: ProviderProps) => {
 
   const data = TRANSLATIONS[language as keyof typeof TRANSLATIONS]
 
-  const setCookie = (type: CookieType, value: boolean | string) => {
+  const setCookie = (type: CookieType, value: boolean) => {
     setCookies((prev) => ({
       ...prev,
       [type]: value,
     }))
   }
+  
 
   const value = {
     cookies,
