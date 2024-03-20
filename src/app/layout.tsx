@@ -51,7 +51,7 @@ export default function RootLayout({
         <div className="page">
           {/* <h1 className="page-title">Cookie Banner with React and TypeScript</h1> */}
           {/* <Debug /> */}
-          <Cookie />
+          {/* <Cookie /> */}
         </div>
         <Dalle3Image />
         <Footer />
