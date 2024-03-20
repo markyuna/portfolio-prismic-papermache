@@ -1,3 +1,4 @@
+// server/index.ts
 import { gptRouter } from "./routers/gpt";
 import { router } from "./trpc";
 

@@ -1,8 +1,9 @@
 "use client";
 
-import { getDalle3Image } from '@/lib/openai';
+import { getDalle3Image } from '../../lib/openai';
 import Image from 'next/image';
 import React, {useState} from 'react'
+import Button from './Button';
 
 export default function Dalle3Image() {
   const [prompt, setPrompt] = useState<string>("");
@@ -13,6 +14,9 @@ export default function Dalle3Image() {
     setLoading(true);
     const result = await getDalle3Image(prompt);
     setLoading(false);
+    if (!result) {
+      return;
+    }
 
     setAiResult(result);
   }
@@ -48,13 +52,20 @@ export default function Dalle3Image() {
           </div>
           )}
         {aiResult && (
+          <>
           <Image 
             width={500} 
             height={500} 
             className="rounded-lg" 
             src={aiResult} 
             alt="Dalle3Image" 
-          />
+            />
+          <button 
+            type="button"
+            className="p-3 bg-blue-500 text-white rounded-lg" 
+            style={{marginTop: "1rem"}}
+            onClick={() => setAiResult("")}>Commander</button>
+          </>
         )} 
     </div>
   )
