@@ -63,8 +63,8 @@
       "meta_image": {
         "config": {
           "constraint": {
-            "height": 1260,
-            "width": 2400
+            "height": 720,
+            "width": 1280
           },
           "label": "Meta Image",
           "thumbnails": []

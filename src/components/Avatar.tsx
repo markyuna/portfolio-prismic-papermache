@@ -21,8 +21,7 @@ export default function Avatar({
     let ctx = gsap.context(() => {
       gsap.fromTo(
         ".avatar",
-        {
-          opacity: 0,
+        { opacity: 0,
           scale: 1.4,
         },
         {
