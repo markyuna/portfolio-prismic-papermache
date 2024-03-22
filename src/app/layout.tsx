@@ -7,8 +7,6 @@ import { Urbanist } from "next/font/google";
 import { PrismicPreview } from "@prismicio/next";
 import { createClient, repositoryName } from "@/prismicio";
 
-import Debug from "@/components/Debug";
-import Cookie from "@/components/Cookie";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -16,7 +14,7 @@ import Dalle3Image from "@/components/Dalle3Image";
 
 export const siteTitle = "Next.js + Prismic";
 
-import { CookieContextProvider } from '../context/CookieContext';
+// import { CookieContextProvider } from '../context/CookieContext';
 
 
 const urbanist = Urbanist({ subsets: ["latin"] });
@@ -40,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <CookieContextProvider> 
+    // <CookieContextProvider> 
     <html lang="en" className="bg-slate-900">
       <body className={clsx(urbanist.className, "relative min-h-screen")}>
         <Header />
@@ -58,7 +56,7 @@ export default function RootLayout({
         <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html>
-    </CookieContextProvider>
+    // </CookieContextProvider>
   
   );
 }

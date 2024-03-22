@@ -1,9 +1,8 @@
 "use client";
 
-import { getDalle3Image } from '../../lib/openai';
+import { getDalle3Image } from '../lib/openai';
 import Image from 'next/image';
 import React, {useState} from 'react'
-import Button from './Button';
 
 export default function Dalle3Image() {
   const [prompt, setPrompt] = useState<string>("");
@@ -48,6 +47,7 @@ export default function Dalle3Image() {
               height={50}
               className="rounded-lg" 
               alt="Loading" 
+              unoptimized={true}
             />
           </div>
           )}
