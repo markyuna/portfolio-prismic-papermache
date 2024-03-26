@@ -178,7 +178,7 @@ export type CreaartDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomepageDocumentDataSlicesSlice = HeroSlice;
+type HomepageDocumentDataSlicesSlice = ExperienceSlice | HeroSlice;
 
 /**
  * Content for Homepage documents

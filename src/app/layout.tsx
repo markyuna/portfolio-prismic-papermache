@@ -14,7 +14,7 @@ import Dalle3Image from "@/components/Dalle3Image";
 
 export const siteTitle = "Next.js + Prismic";
 
-// import { CookieContextProvider } from '../context/CookieContext';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 const urbanist = Urbanist({ subsets: ["latin"] });
@@ -41,6 +41,7 @@ export default function RootLayout({
     // <CookieContextProvider> 
     <html lang="en" className="bg-slate-900">
       <body className={clsx(urbanist.className, "relative min-h-screen")}>
+        <SpeedInsights/>
         <Header />
         {children}
         
