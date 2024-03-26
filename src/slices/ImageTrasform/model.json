@@ -16,15 +16,10 @@
           "type": "Image",
           "config": {
             "label": "Original Image",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
-        "transformed_image": {
-          "type": "Image",
-          "config": {
-            "label": "Transformed Image",
-            "constraint": {},
+            "constraint": {
+              "width": null,
+              "height": null
+            },
             "thumbnails": []
           }
         }

@@ -1,37 +1,22 @@
 {
   "format": "page",
-  "id": "project",
-  "label": "Sculptures",
+  "id": "creaart",
+  "label": "CreaArt",
   "repeatable": true,
   "status": true,
   "json": {
     "Main": {
-      "title": {
-        "type": "Text",
-        "config": {
-          "label": "Title",
-          "placeholder": ""
-        }
-      },
       "uid": {
         "config": {
           "label": "UID"
         },
         "type": "UID"
       },
-      "date": {
-        "type": "Date",
+      "title": {
+        "type": "Text",
         "config": {
-          "label": "Date",
+          "label": "title",
           "placeholder": ""
-        }
-      },
-      "hover_image": {
-        "type": "Image",
-        "config": {
-          "label": "Hover Image",
-          "constraint": {},
-          "thumbnails": []
         }
       },
       "slices": {
@@ -42,7 +27,7 @@
             "image_block": {
               "type": "SharedSlice"
             },
-            "text_block": {
+            "crea_art": {
               "type": "SharedSlice"
             }
           }
@@ -60,8 +45,8 @@
       "meta_image": {
         "config": {
           "constraint": {
-            "height": 720,
-            "width": 1280
+            "height": 1260,
+            "width": 2400
           },
           "label": "Meta Image",
           "thumbnails": []

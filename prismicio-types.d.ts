@@ -102,6 +102,82 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
+type CreaartDocumentDataSlicesSlice = ImageBlockSlice | CreaArtSlice;
+
+/**
+ * Content for CreaArt documents
+ */
+interface CreaartDocumentData {
+  /**
+   * title field in *CreaArt*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: creaart.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *CreaArt*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: creaart.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<CreaartDocumentDataSlicesSlice> /**
+   * Meta Description field in *CreaArt*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: creaart.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *CreaArt*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: creaart.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *CreaArt*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: creaart.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
+}
+
+/**
+ * CreaArt document from Prismic
+ *
+ * - **API ID**: `creaart`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CreaartDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CreaartDocumentData>,
+    "creaart",
+    Lang
+  >;
+
 type HomepageDocumentDataSlicesSlice = HeroSlice;
 
 /**
@@ -232,10 +308,7 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-type ProjectDocumentDataSlicesSlice =
-  | ImageTrasformSlice
-  | ImageBlockSlice
-  | TextBlockSlice;
+type ProjectDocumentDataSlicesSlice = ImageBlockSlice | TextBlockSlice;
 
 /**
  * Content for Sculptures documents
@@ -489,6 +562,7 @@ export type SettingsDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | BlogPostDocument
+  | CreaartDocument
   | HomepageDocument
   | PageDocument
   | ProjectDocument
@@ -665,6 +739,71 @@ export type ContentIndexSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *CreaArt → Primary*
+ */
+export interface CreaArtSliceDefaultPrimary {
+  /**
+   * heading field in *CreaArt → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: crea_art.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * Button Text field in *CreaArt → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: crea_art.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *CreaArt → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: crea_art.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for CreaArt Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CreaArtSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CreaArtSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CreaArt*
+ */
+type CreaArtSliceVariation = CreaArtSliceDefault;
+
+/**
+ * CreaArt Shared Slice
+ *
+ * - **API ID**: `crea_art`
+ * - **Description**: CreaArt
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CreaArtSlice = prismic.SharedSlice<
+  "crea_art",
+  CreaArtSliceVariation
+>;
+
+/**
  * Primary content in *Experience → Primary*
  */
 export interface ExperienceSliceDefaultPrimary {
@@ -692,16 +831,6 @@ export interface ExperienceSliceDefaultItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
-
-  /**
-   * Time Period field in *Experience → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: experience.items[].time_period
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  time_period: prismic.KeyTextField;
 
   /**
    * Institution field in *Experience → Items*
@@ -829,6 +958,36 @@ export interface ImageBlockSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * image2 field in *ImageBlock → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_block.primary.image2
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image2: prismic.ImageField<never>;
+
+  /**
+   * image3 field in *ImageBlock → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_block.primary.image3
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image3: prismic.ImageField<never>;
+
+  /**
+   * image4 field in *ImageBlock → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_block.primary.image4
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image4: prismic.ImageField<never>;
 }
 
 /**
@@ -874,16 +1033,6 @@ export interface ImageTrasformSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   original_image: prismic.ImageField<never>;
-
-  /**
-   * Transformed Image field in *ImageTrasform → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: image_trasform.primary.transformed_image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  transformed_image: prismic.ImageField<never>;
 }
 
 /**
@@ -1044,6 +1193,9 @@ declare module "@prismicio/client" {
       BlogPostDocument,
       BlogPostDocumentData,
       BlogPostDocumentDataSlicesSlice,
+      CreaartDocument,
+      CreaartDocumentData,
+      CreaartDocumentDataSlicesSlice,
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
@@ -1065,6 +1217,10 @@ declare module "@prismicio/client" {
       ContentIndexSliceDefaultPrimary,
       ContentIndexSliceVariation,
       ContentIndexSliceDefault,
+      CreaArtSlice,
+      CreaArtSliceDefaultPrimary,
+      CreaArtSliceVariation,
+      CreaArtSliceDefault,
       ExperienceSlice,
       ExperienceSliceDefaultPrimary,
       ExperienceSliceDefaultItem,

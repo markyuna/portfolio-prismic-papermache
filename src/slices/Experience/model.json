@@ -28,13 +28,6 @@
             "placeholder": ""
           }
         },
-        "time_period": {
-          "type": "Text",
-          "config": {
-            "label": "Time Period",
-            "placeholder": ""
-          }
-        },
         "institution": {
           "type": "Text",
           "config": {
