@@ -1,10 +1,9 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
-
-import Dalle3Image from "@/components/Dalle3Image";
-import { formatDate } from "@/utils/formatDate";
+import { components } from "@/slices";
 
 type Params = { uid: string };
 
@@ -14,7 +13,7 @@ export default async function Page({ params }: { params: Params }) {
     .getByUID("creaart", params.uid)
     .catch(() => notFound());
 
-  return <Dalle3Image />;
+  return <SliceZone slices={page.data.slices} components={components} />;
 }
 
 export async function generateMetadata({
@@ -28,8 +27,8 @@ export async function generateMetadata({
     .catch(() => notFound());
 
   return {
-    title: page.data.heading,
-    description: page.data.meta_image,
+    title: page.data.meta_title,
+    description: page.data.meta_description,
   };
 }
 

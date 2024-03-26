@@ -25,6 +25,7 @@ const CreaArt = ({ slice }: CreaArtProps): JSX.Element => {
         <Heading as="h1" size="md" className="col-start-1">
           {slice.primary.heading}
         </Heading>
+        <Dalle3Image />
         <Button 
           linkField={slice.primary.button_link}
           label={slice.primary.button_text}

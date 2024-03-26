@@ -22,17 +22,6 @@
             },
             "thumbnails": []
           }
-        },
-        "transformed_image": {
-          "type": "Image",
-          "config": {
-            "label": "Transformed Image",
-            "constraint": {
-              "width": 0,
-              "height": null
-            },
-            "thumbnails": []
-          }
         }
       },
       "items": {}

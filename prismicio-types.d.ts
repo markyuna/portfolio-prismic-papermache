@@ -102,7 +102,7 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
-type CreaartDocumentDataSlicesSlice = CreaArtSlice;
+type CreaartDocumentDataSlicesSlice = ImageBlockSlice | CreaArtSlice;
 
 /**
  * Content for CreaArt documents
@@ -129,17 +129,6 @@ interface CreaartDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<CreaartDocumentDataSlicesSlice> /**
-   * Meta Title field in *CreaArt*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: creaart.meta_title
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
-  meta_title: prismic.KeyTextField;
-
-  /**
    * Meta Description field in *CreaArt*
    *
    * - **Field Type**: Text
@@ -147,7 +136,7 @@ interface CreaartDocumentData {
    * - **API ID Path**: creaart.meta_description
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
+   */;
   meta_description: prismic.KeyTextField;
 
   /**
@@ -160,13 +149,24 @@ interface CreaartDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   meta_image: prismic.ImageField<never>;
+
+  /**
+   * Meta Title field in *CreaArt*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: creaart.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_title: prismic.KeyTextField;
 }
 
 /**
  * CreaArt document from Prismic
  *
  * - **API ID**: `creaart`
- * - **Repeatable**: `false`
+ * - **Repeatable**: `true`
  * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
@@ -308,10 +308,7 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-type ProjectDocumentDataSlicesSlice =
-  | ImageTrasformSlice
-  | ImageBlockSlice
-  | TextBlockSlice;
+type ProjectDocumentDataSlicesSlice = ImageBlockSlice | TextBlockSlice;
 
 /**
  * Content for Sculptures documents
@@ -961,6 +958,36 @@ export interface ImageBlockSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
+  /**
+   * image2 field in *ImageBlock → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_block.primary.image2
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image2: prismic.ImageField<never>;
+
+  /**
+   * image3 field in *ImageBlock → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_block.primary.image3
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image3: prismic.ImageField<never>;
+
+  /**
+   * image4 field in *ImageBlock → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_block.primary.image4
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image4: prismic.ImageField<never>;
 }
 
 /**
@@ -1006,16 +1033,6 @@ export interface ImageTrasformSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   original_image: prismic.ImageField<never>;
-
-  /**
-   * Transformed Image field in *ImageTrasform → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: image_trasform.primary.transformed_image
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  transformed_image: prismic.ImageField<never>;
 }
 
 /**
