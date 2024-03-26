@@ -10,7 +10,7 @@ import { createClient, repositoryName } from "@/prismicio";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-// import Dalle3Image from "@/components/Dalle3Image";
+import Dalle3Image from "@/components/Dalle3Image";
 
 export const siteTitle = "Next.js + Prismic";
 
@@ -51,7 +51,7 @@ export default function RootLayout({
           {/* <Debug /> */}
           {/* <Cookie /> */}
         </div>
-        {/* <Dalle3Image /> */}
+        <Dalle3Image />
         <Footer />
         <PrismicPreview repositoryName={repositoryName} />
       </body>

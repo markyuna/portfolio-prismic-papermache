@@ -3,7 +3,6 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
 import Bounded from "@/components/Bounded";
 import Heading from "@/components/Heading";
-import Dalle3Image from "@/components/Dalle3Image";
 import Button from "@/components/Button";
 
 
@@ -25,7 +24,7 @@ const CreaArt = ({ slice }: CreaArtProps): JSX.Element => {
         <Heading as="h1" size="md" className="col-start-1">
           {slice.primary.heading}
         </Heading>
-        <Dalle3Image />
+        
         <Button 
           linkField={slice.primary.button_link}
           label={slice.primary.button_text}
