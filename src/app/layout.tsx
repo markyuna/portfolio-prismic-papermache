@@ -51,8 +51,8 @@ export default function RootLayout({
           {/* <h1 className="page-title">Cookie Banner with React and TypeScript</h1> */}
           {/* <Debug /> */}
           {/* <Cookie /> */}
-        </div>
         <Dalle3Image />
+        </div>
         <Footer />
         <PrismicPreview repositoryName={repositoryName} />
       </body>

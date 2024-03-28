@@ -2,6 +2,7 @@ import Bounded from "@/components/Bounded";
 import Heading from "@/components/Heading";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { PrismicNextImage } from "@prismicio/next";
 
 /**
  * Props for `Experience`.
@@ -32,6 +33,33 @@ const Experience = ({ slice }: ExperienceProps): JSX.Element => {
           </div>
           <div className="prose prose-lg prose-invert mt-4">
             <PrismicRichText field={item.description} />
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5"> 
+              <PrismicNextImage 
+                field={slice.primary.img1} 
+                imgixParams={{ w: 300 }}
+                className="not-prose w-full h-full rounded-md"
+              />
+              <PrismicNextImage 
+                field={slice.primary.img2} 
+                imgixParams={{ w: 300 }}
+                className="not-prose w-full h-full rounded-md"
+              />
+              <PrismicNextImage 
+                field={slice.primary.img3} 
+                imgixParams={{ w: 300 }}
+                className="not-prose w-full h-full rounded-md"
+              />
+              <PrismicNextImage 
+                field={slice.primary.img4} 
+                imgixParams={{ w: 300 }}
+                className="not-prose w-full h-full rounded-md"
+              />
+              <PrismicNextImage 
+                field={slice.primary.img5} 
+                imgixParams={{ w: 300 }}
+                className="not-prose w-full h-full rounded-md"
+              />
+            </div>
           </div>
         </div>
       ))}

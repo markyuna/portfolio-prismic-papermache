@@ -45,7 +45,40 @@
           }
         }
       },
-      "items": {}
+      "items": {
+        "img1": {
+          "type": "Image",
+          "config": {
+            "label": "img1",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "img2": {
+          "type": "Image",
+          "config": {
+            "label": "img2",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "img3": {
+          "type": "Image",
+          "config": {
+            "label": "img3",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "img4": {
+          "type": "Image",
+          "config": {
+            "label": "img4",
+            "constraint": {},
+            "thumbnails": []
+          }
+        }
+      }
     }
   ]
 }

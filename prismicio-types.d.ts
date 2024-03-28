@@ -816,6 +816,56 @@ export interface ExperienceSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   heading: prismic.KeyTextField;
+
+  /**
+   * img1 field in *Experience → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experience.primary.img1
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img1: prismic.ImageField<never>;
+
+  /**
+   * img2 field in *Experience → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experience.primary.img2
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img2: prismic.ImageField<never>;
+
+  /**
+   * img3 field in *Experience → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experience.primary.img3
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img3: prismic.ImageField<never>;
+
+  /**
+   * img4 field in *Experience → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experience.primary.img4
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img4: prismic.ImageField<never>;
+
+  /**
+   * img5 field in *Experience → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experience.primary.img5
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img5: prismic.ImageField<never>;
 }
 
 /**
@@ -991,6 +1041,51 @@ export interface ImageBlockSliceDefaultPrimary {
 }
 
 /**
+ * Primary content in *ImageBlock → Items*
+ */
+export interface ImageBlockSliceDefaultItem {
+  /**
+   * img1 field in *ImageBlock → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_block.items[].img1
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img1: prismic.ImageField<never>;
+
+  /**
+   * img2 field in *ImageBlock → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_block.items[].img2
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img2: prismic.ImageField<never>;
+
+  /**
+   * img3 field in *ImageBlock → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_block.items[].img3
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img3: prismic.ImageField<never>;
+
+  /**
+   * img4 field in *ImageBlock → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_block.items[].img4
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img4: prismic.ImageField<never>;
+}
+
+/**
  * Default variation for ImageBlock Slice
  *
  * - **API ID**: `default`
@@ -1000,7 +1095,7 @@ export interface ImageBlockSliceDefaultPrimary {
 export type ImageBlockSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<ImageBlockSliceDefaultPrimary>,
-  never
+  Simplify<ImageBlockSliceDefaultItem>
 >;
 
 /**
@@ -1232,6 +1327,7 @@ declare module "@prismicio/client" {
       HeroSliceDefault,
       ImageBlockSlice,
       ImageBlockSliceDefaultPrimary,
+      ImageBlockSliceDefaultItem,
       ImageBlockSliceVariation,
       ImageBlockSliceDefault,
       ImageTrasformSlice,
