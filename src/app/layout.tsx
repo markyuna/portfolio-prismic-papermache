@@ -19,7 +19,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
-export async function generateRootLayoutMetadata(): Promise<Metadata> {
+export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
   const settings = await client.getSingle("settings");
 
