@@ -19,7 +19,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateRootLayoutMetadata(): Promise<Metadata> {
   const client = createClient();
   const settings = await client.getSingle("settings");
 
@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: settings.data.meta_title,
     description: settings.data.meta_description,
     // openGraph: {
-    //   images: [settings.data.og_image?.url || ""],
+    //   images: [settings.data.og_image?.url ?? ""],
     // },
   };
 }
@@ -38,7 +38,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    // <CookieContextProvider> 
     <html lang="en" className="bg-slate-900">
       <body className={clsx(urbanist.className, "relative min-h-screen")}>
         <SpeedInsights/>
@@ -48,16 +47,13 @@ export default function RootLayout({
         <div className="background-gradient absolute inset-0 -z-50 max-h-screen" />
         <div className="pointer-events-none absolute inset-0 -z-40 h-full bg-[url('/noisetexture.jpg')] opacity-20 mix-blend-soft-light"></div>
         <div className="page">
-          {/* <h1 className="page-title">Cookie Banner with React and TypeScript</h1> */}
-          {/* <Debug /> */}
-          {/* <Cookie /> */}
+   
         <Dalle3Image />
         </div>
         <Footer />
         <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html>
-    // </CookieContextProvider>
   
   );
 }

@@ -16,8 +16,8 @@ export default function Dalle3Image() {
     if (!result) {
       return;
     }
-    console.log(result);
     setAiResult(result);
+    console.log("setResult", result);
   }
 
   return (
@@ -55,14 +55,8 @@ export default function Dalle3Image() {
           )}
         {aiResult && (
           <>
-          {/* <iframe 
-            width={500} 
-            height={500} 
-            className="rounded-lg" 
-            src={aiResult} 
-            title="Dalle3Image" 
-            /> */}
-          <Image className="rounded-lg" alt={"AI Image"} height={500} width={500} src={aiResult} />
+            <Image className="rounded-lg" alt={"AI Image"} height={800} width={500} src={aiResult} />
+           
           <button 
             type="button"
             className="p-3 bg-blue-500 text-white rounded-lg" 
