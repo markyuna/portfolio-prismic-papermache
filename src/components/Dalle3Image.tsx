@@ -1,23 +1,36 @@
 "use client";
 
+import React, {useState} from 'react'
 import { getDalle3Image } from '../lib/openai';
 import Image from 'next/image';
-import React, {useState} from 'react'
 
 export default function Dalle3Image() {
-  const [prompt, setPrompt] = useState<string>("");
-  const [aiResult, setAiResult] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
+  const [prompt, setPrompt] = useState("");
+  const [aiResult, setAiResult] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
+  // const handleDalle3 = async () => {
+  //   setLoading(true);
+  //   const result = await getDalle3Image(prompt);
+  //   setLoading(false);
+  //   if (!result) {
+  //     return;
+  //   }
+  //   setAiResult(result);
+  //   console.log("setResult", result);
+  // }
   const handleDalle3 = async () => {
     setLoading(true);
-    const result = await getDalle3Image(prompt);
-    setLoading(false);
-    if (!result) {
-      return;
+    setError(""); // Reiniciar el error
+    try {
+      const result = await getDalle3Image(prompt);
+      setAiResult(result);
+    } catch (error) {
+      setError("Error al generar la imagen. Por favor, inténtalo de nuevo más tarde.");
+    } finally {
+      setLoading(false);
     }
-    setAiResult(result);
-    console.log("setResult", result);
   }
 
   return (
@@ -38,11 +51,12 @@ export default function Dalle3Image() {
             disabled={loading}>
               Generate
           </button>
-        </div>
+        </div> n
         {loading && 
         (
           <div className="flex flex-col gap-3 justify-center items-center">
             <h2 className="text-2xl font-bold" style={{color: "#fff"}}>Loading ..</h2>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
             <Image 
               src={"/Spinner.gif"} 
               width={50} 
@@ -57,11 +71,12 @@ export default function Dalle3Image() {
           <>
             <Image className="rounded-lg" alt={"AI Image"} height={800} width={500} src={aiResult} />
            
-          <button 
-            type="button"
-            className="p-3 bg-blue-500 text-white rounded-lg" 
-            style={{marginTop: "1rem"}}
-            onClick={() => setAiResult("")}>Commander</button>
+            <button 
+              type="button"
+              className="p-3 bg-blue-500 text-white rounded-lg" 
+              style={{marginTop: "1rem"}}
+              onClick={() => setAiResult("")}>Commander
+            </button>
           </>
         )} 
     </div>
