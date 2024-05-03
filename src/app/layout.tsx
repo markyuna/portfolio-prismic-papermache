@@ -1,12 +1,12 @@
 // src/app/layout.tsx
 
 import "./globals.css";
+import "./body.css"; // Importa los estilos del cuerpo aquí
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import { PrismicPreview } from "@prismicio/next";
 import { createClient, repositoryName } from "@/prismicio";
-
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -14,8 +14,7 @@ import Dalle3Image from "@/components/Dalle3Image";
 
 export const siteTitle = "Next.js + Prismic";
 
-import { SpeedInsights } from "@vercel/speed-insights/next"
-
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -54,6 +53,5 @@ export default function RootLayout({
         <PrismicPreview repositoryName={repositoryName} />
       </body>
     </html>
-  
   );
 }

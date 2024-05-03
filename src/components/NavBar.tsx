@@ -37,7 +37,7 @@ export default function NavBar({
             open ? "translate-x-0" : "translate-x-[100%]",
           )}
         >
-          <button
+          <button // Pasando el valor de cta_label como la etiqueta del botón
             aria-label="Close menu"
             aria-expanded={open}
             className="fixed right-4 top-3 block p-2 text-2xl text-slate-800 md:hidden "
@@ -45,6 +45,7 @@ export default function NavBar({
           >
             <MdClose />
           </button>
+
           {settings.data.nav_items.map(({ link, label }, index) => (
             <React.Fragment key={label}>
               <li className="first:mt-8">
