@@ -1,3 +1,5 @@
+// next.config.js
+
 const nextConfig = {
   compiler: {
     reactRemoveProperties: { properties: ['^data-custom$'] },
@@ -22,4 +24,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

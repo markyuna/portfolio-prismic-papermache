@@ -51,7 +51,7 @@ export default function Dalle3Image() {
             disabled={loading}>
               Generate
           </button>
-        </div> n
+        </div>
         {loading && 
         (
           <div className="flex flex-col gap-3 justify-center items-center">
