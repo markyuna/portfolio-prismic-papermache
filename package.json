@@ -25,9 +25,11 @@
     "next-themes": "^0.3.0",
     "node-fetch": "^3.3.2",
     "orcish-openai-connector": "^1.5.67",
+    "quokka-treasure-chest": "^1.0.2",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
+    "react-loading-skeleton": "^3.4.0",
     "tailwind-merge": "^2.2.2",
     "three": "^0.162.0",
     "zod": "^3.22.4"
