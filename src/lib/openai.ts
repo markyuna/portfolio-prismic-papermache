@@ -9,9 +9,11 @@ if (!process.env.OPENAI_API_KEY) {
 
 const orcishOpenAIService = new OrcishOpenAIService({
     apiKey: process.env.OPENAI_API_KEY,
+    gptModel: "gpt-3.5-turbo",
+    gptTemperature: 0.7,
+    gptMaxTokens: 512,
+    imageModel: "dall-e-3",
 });
-
-
 
 export async function getDalle3Image(prompt: string) {
     return await orcishOpenAIService.getDalle3Image(prompt);

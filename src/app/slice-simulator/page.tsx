@@ -5,11 +5,13 @@ import { SliceZone } from "@prismicio/react";
 
 import { components } from "../../slices";
 
+const SliceZoneComponent = (props: any) => <SliceZone {...props} components={components} />;
+
 export default function SliceSimulatorPage() {
   return (
     <SliceSimulator
       background="#121b2f"
-      sliceZone={(props) => <SliceZone {...props} components={components} />}
+      sliceZone={SliceZoneComponent}
     />
   );
 }

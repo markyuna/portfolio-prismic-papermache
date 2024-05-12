@@ -10,22 +10,14 @@ export default function Dalle3Image() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // const handleDalle3 = async () => {
-  //   setLoading(true);
-  //   const result = await getDalle3Image(prompt);
-  //   setLoading(false);
-  //   if (!result) {
-  //     return;
-  //   }
-  //   setAiResult(result);
-  //   console.log("setResult", result);
-  // }
+
   const handleDalle3 = async () => {
     setLoading(true);
     setError(""); // Reiniciar el error
     try {
       const result = await getDalle3Image(prompt);
       setAiResult(result);
+        console.log("setAiResult", result);
     } catch (error) {
       setError("Error al generar la imagen. Por favor, inténtalo de nuevo más tarde.");
     } finally {
@@ -35,7 +27,7 @@ export default function Dalle3Image() {
 
   return (
     <div className='flex flex-col gap-3 justify-center items-center'>
-        <h1 className="p-5 text-2xl font-bold" style={{color: "#fff"}}>Créez votre propre sculpture</h1>
+        <h1 className="p-5 text-2xl font-bold text-white">Créez votre propre sculpture</h1>
         <div className="flex flex-wrap gap-3 justify-center items-center">
           <input 
             type="text" 
