@@ -1,5 +1,5 @@
-import nextJest from "next/jest";
-import path from "path";
+const nextJest = require("next/jest");
+const path = require("path");
 
 const nextDir = "./";
 const customJestConfig = {
@@ -26,4 +26,6 @@ const customJestConfig = {
 
 const createJestConfig = nextJest({ dir: nextDir });
 
-export default createJestConfig(customJestConfig);
+module.exports = createJestConfig({
+  ...customJestConfig,
+});
