@@ -1,5 +1,5 @@
 // src/app/layout.tsx
-
+import { Analytics } from "@vercel/analytics/react"
 import "./globals.css";
 import clsx from "clsx";
 import type { Metadata } from "next";
@@ -38,6 +38,7 @@ export default function RootLayout({
     <html lang="en" className="bg-slate-900">
       <body className={clsx(urbanist.className, "relative min-h-screen")}>
         <SpeedInsights />
+        <Analytics />
         <Header />
         {children}
         <div className="background-gradient absolute inset-0 -z-50 max-h-screen" />
