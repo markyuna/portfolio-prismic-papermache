@@ -10,8 +10,6 @@ import { createClient, repositoryName } from "@/prismicio";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
-export const siteTitle = "Next.js + Prismic";
-
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
