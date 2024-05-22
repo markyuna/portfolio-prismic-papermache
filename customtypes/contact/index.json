@@ -1,49 +1,20 @@
 {
   "format": "page",
-  "id": "project",
-  "label": "Sculptures",
-  "repeatable": true,
-  "status": true,
+  "id": "contact",
   "json": {
     "Main": {
-      "title": {
-        "type": "Text",
-        "config": {
-          "label": "Title",
-          "placeholder": ""
-        }
-      },
       "uid": {
         "config": {
           "label": "UID"
         },
         "type": "UID"
       },
-      "date": {
-        "type": "Date",
-        "config": {
-          "label": "Date",
-          "placeholder": ""
-        }
-      },
-      "hover_image": {
-        "type": "Image",
-        "config": {
-          "label": "Hover Image",
-          "constraint": {},
-          "thumbnails": []
-        }
-      },
       "slices": {
-        "type": "Slices",
-        "fieldset": "Slice Zone",
         "config": {
-          "choices": {
-            "text_block": {
-              "type": "SharedSlice"
-            }
-          }
-        }
+          "choices": {}
+        },
+        "fieldset": "Slice Zone",
+        "type": "Slices"
       }
     },
     "SEO & Metadata": {
@@ -57,8 +28,8 @@
       "meta_image": {
         "config": {
           "constraint": {
-            "height": 720,
-            "width": 1280
+            "height": 1260,
+            "width": 2400
           },
           "label": "Meta Image",
           "thumbnails": []
@@ -73,5 +44,8 @@
         "type": "Text"
       }
     }
-  }
+  },
+  "label": "Contact",
+  "repeatable": true,
+  "status": true
 }

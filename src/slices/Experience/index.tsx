@@ -3,6 +3,7 @@ import Heading from "@/components/Heading";
 import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
+import Dalle3Image from "@/components/Dalle3Image";
 /**
  * Props for `Experience`.
  */
@@ -26,39 +27,41 @@ const Experience = ({ slice }: ExperienceProps): JSX.Element => {
             {item.title}
           </Heading>
 
-          <div className="mt-1 flex w-fit items-center gap-1 text-2xl font-semibold tracking-tight text-slate-400"> 
+          <div className="mt-1 flex w-fit items-center gap-1 text-2xl font-semibold tracking-tight text-slate-400">
             <span className="text-3xl font-extralight"></span>{" "}
             <span>{item.institution}</span>
           </div>
           <div className="prose prose-lg prose-invert mt-4">
             <PrismicRichText field={item.description} />
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5">        
-              <PrismicNextImage 
-                field={slice.primary.img1} 
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-5">
+              <PrismicNextImage
+                field={slice.primary.img1}
                 imgixParams={{ w: 300 }}
-                className="not-prose w-full h-full rounded-md"
+                className="not-prose h-full w-full rounded-md"
               />
-              <PrismicNextImage 
-                field={slice.primary.img2} 
+              <PrismicNextImage
+                field={slice.primary.img2}
                 imgixParams={{ w: 300 }}
-                className="not-prose w-full h-full rounded-md"
+                className="not-prose h-full w-full rounded-md"
               />
-              <PrismicNextImage 
-                field={slice.primary.img3} 
+              <PrismicNextImage
+                field={slice.primary.img3}
                 imgixParams={{ w: 300 }}
-                className="not-prose w-full h-full rounded-md"
+                className="not-prose h-full w-full rounded-md"
               />
-              <PrismicNextImage 
-                field={slice.primary.img4} 
+              <PrismicNextImage
+                field={slice.primary.img4}
                 imgixParams={{ w: 300 }}
-                className="not-prose w-full h-full rounded-md"
+                className="not-prose h-full w-full rounded-md"
               />
-              <PrismicNextImage 
-                field={slice.primary.img5} 
+              <PrismicNextImage
+                field={slice.primary.img5}
                 imgixParams={{ w: 300 }}
-                className="not-prose w-full h-full rounded-md"
+                className="not-prose h-full w-full rounded-md"
               />
             </div>
+
+            <Dalle3Image />
           </div>
         </div>
       ))}

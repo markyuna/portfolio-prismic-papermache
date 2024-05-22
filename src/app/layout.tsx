@@ -1,7 +1,6 @@
 // src/app/layout.tsx
 
 import "./globals.css";
-import "./body.css"; // Importa los estilos del cuerpo aquí
 import clsx from "clsx";
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
@@ -10,7 +9,6 @@ import { createClient, repositoryName } from "@/prismicio";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import Dalle3Image from "@/components/Dalle3Image";
 
 export const siteTitle = "Next.js + Prismic";
 
@@ -39,18 +37,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-slate-900">
       <body className={clsx(urbanist.className, "relative min-h-screen")}>
-        <SpeedInsights/>
+        <SpeedInsights />
         <Header />
         {children}
-        
         <div className="background-gradient absolute inset-0 -z-50 max-h-screen" />
         <div className="pointer-events-none absolute inset-0 -z-40 h-full bg-[url('/noisetexture.jpg')] opacity-20 mix-blend-soft-light"></div>
-        <div className="page">
-   
-        <Dalle3Image />
-        </div>
-        <Footer />
         <PrismicPreview repositoryName={repositoryName} />
+        <Footer />
       </body>
     </html>
   );

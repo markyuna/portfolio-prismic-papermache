@@ -12,12 +12,12 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
   }
 
   return (
-    <div className="modal-overlay z-50 fixed flex flex-col items-center justify-center inset-0 bg-black bg-opacity-75 transition-opacity">
-      <div className="modal relative pt-20 px-12 pb-12 bg-white max-w-[300px]">
+    <div className="modal-overlay fixed inset-0 z-50 flex flex-col items-center justify-center bg-black bg-opacity-75 transition-opacity">
+      <div className="modal relative max-w-[300px] bg-white px-12 pb-12 pt-20">
         {children}
         <button
           onClick={onClose}
-          className="btn absolute top-5 right-5"
+          className="btn absolute right-5 top-5"
           aria-label="Close Modal"
         >
           X

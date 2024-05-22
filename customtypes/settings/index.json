@@ -37,21 +37,6 @@
           }
         }
       },
-      "cta_link": {
-        "type": "Link",
-        "config": {
-          "label": "CTA Link",
-          "placeholder": "",
-          "select": null
-        }
-      },
-      "cta_label": {
-        "type": "Text",
-        "config": {
-          "label": "CTA Label",
-          "placeholder": ""
-        }
-      },
       "instagram_link": {
         "type": "Link",
         "config": {
@@ -73,6 +58,21 @@
         "type": "Link",
         "config": {
           "label": "Linkedln Link",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "cta_label": {
+        "type": "Text",
+        "config": {
+          "label": "cta_label",
+          "placeholder": ""
+        }
+      },
+      "cta_link": {
+        "type": "Link",
+        "config": {
+          "label": "cta_link",
           "placeholder": "",
           "select": null
         }

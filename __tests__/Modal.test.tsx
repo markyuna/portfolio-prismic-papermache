@@ -7,7 +7,7 @@ describe("Modal component", () => {
     const { container } = render(
       <Modal isOpen={false} onClose={() => {}}>
         <div>Modal Content</div>
-      </Modal>
+      </Modal>,
     );
     expect(container.firstChild).toBeNull();
   });
@@ -16,7 +16,7 @@ describe("Modal component", () => {
     const { getByText } = render(
       <Modal isOpen={true} onClose={() => {}}>
         <div>Modal Content</div>
-      </Modal>
+      </Modal>,
     );
     expect(getByText("Modal Content")).toBeInTheDocument();
   });
@@ -26,7 +26,7 @@ describe("Modal component", () => {
     const { getByLabelText } = render(
       <Modal isOpen={true} onClose={onCloseMock}>
         <div>Modal Content</div>
-      </Modal>
+      </Modal>,
     );
     const closeButton = getByLabelText("Close Modal");
     fireEvent.click(closeButton);

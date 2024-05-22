@@ -7,8 +7,7 @@ import Heading from "@/components/Heading";
 /**
  * Props for `BlogPostIndex`.
  */
-export type ContentIndexProps =
-  SliceComponentProps<Content.ContentIndexSlice>;
+export type ContentIndexProps = SliceComponentProps<Content.ContentIndexSlice>;
 
 /**
  * Component for "ContentIndex" Slices.
@@ -33,7 +32,7 @@ const ContentIndex = async ({
         {slice.primary.heading}
       </Heading>
       {isFilled.richText(slice.primary.description) && (
-        <div className="prose prose-md prose-invert mb-10">
+        <div className="prose-md prose prose-invert mb-10">
           <PrismicRichText field={slice.primary.description} />
         </div>
       )}

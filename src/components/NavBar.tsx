@@ -25,7 +25,7 @@ export default function NavBar({
           <button
             aria-expanded={open}
             aria-label="Open menu"
-            className="block p-2 text-2xl text-slate-800 md:hidden"
+            className="block p-2 text-2xl text-slate-300 md:hidden"
             onClick={() => setOpen(true)}
           >
             <MdMenu />
@@ -33,14 +33,14 @@ export default function NavBar({
         </div>
         <div
           className={clsx(
-            "fixed bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-end gap-4 bg-gray-500 bg-opacity-50 pr-4 pt-14 transition-transform duration-300 ease-in-out md:hidden",
+            "fixed bottom-0 left-0 right-0 top-0 z-50 flex flex-col items-end gap-4 bg-gray-700 bg-opacity-50 pr-4 pt-14 transition-transform duration-300 ease-in-out md:hidden",
             open ? "translate-x-0" : "translate-x-[100%]",
           )}
         >
           <button // Pasando el valor de cta_label como la etiqueta del botón
             aria-label="Close menu"
             aria-expanded={open}
-            className="fixed right-4 top-3 block p-2 text-2xl text-slate-800 md:hidden "
+            className="fixed right-4 top-3 block p-2 text-2xl text-slate-300 md:hidden "
             onClick={() => setOpen(false)}
           >
             <MdClose />
@@ -51,7 +51,7 @@ export default function NavBar({
               <li className="first:mt-8">
                 <PrismicNextLink
                   className={clsx(
-                    "group relative block overflow-hidden rounded px-3 text-3xl font-bold text-slate-900 ",
+                    "group relative block overflow-hidden rounded px-3 text-3xl font-bold text-slate-300 ",
                   )}
                   field={link}
                   onClick={() => setOpen(false)}
@@ -82,13 +82,13 @@ export default function NavBar({
               )}
             </React.Fragment>
           ))}
-          <li>
+          {/* <li>
             <Button
               linkField={settings.data.cta_link}
               label={settings.data.cta_label}
               className="ml-3"
             />
-          </li>
+          </li> */}
         </div>
         <DesktopMenu settings={settings} pathname={pathname} />
       </ul>
@@ -101,7 +101,7 @@ function NameLogo({ name }: { name: KeyTextField }) {
     <Link
       href="/"
       aria-label="Home page"
-      className="text-xl font-extrabold tracking-tighter text-slate-900"
+      className="text-xl font-extrabold tracking-tighter text-slate-300"
     >
       {name}
     </Link>

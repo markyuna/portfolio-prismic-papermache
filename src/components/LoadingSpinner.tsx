@@ -1,6 +1,6 @@
 // components/LoadingSpinner.tsx
-import React from 'react';
-import Skeleton from 'react-loading-skeleton';
+import React from "react";
+import Skeleton from "react-loading-skeleton";
 
 const LoadingSpinner: React.FC = () => {
   return (

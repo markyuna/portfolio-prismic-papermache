@@ -12,22 +12,15 @@
         },
         "type": "UID"
       },
-      "title": {
-        "type": "Text",
-        "config": {
-          "label": "title",
-          "placeholder": ""
-        }
-      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "image_block": {
+            "tech_list": {
               "type": "SharedSlice"
             },
-            "crea_art": {
+            "experience": {
               "type": "SharedSlice"
             }
           }
