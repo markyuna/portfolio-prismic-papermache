@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { render, fireEvent, waitFor } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import Dalle3Image from "../src/components/Dalle3Image";
 
 describe("Dalle3Image component", () => {

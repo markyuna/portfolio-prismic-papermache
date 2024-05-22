@@ -6,7 +6,6 @@ import { Content, KeyTextField, asLink } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
 import Link from "next/link";
 import { MdMenu, MdClose } from "react-icons/md";
-import Button from "./Button";
 import { usePathname } from "next/navigation";
 
 export default function NavBar({
@@ -82,13 +81,6 @@ export default function NavBar({
               )}
             </React.Fragment>
           ))}
-          {/* <li>
-            <Button
-              linkField={settings.data.cta_link}
-              label={settings.data.cta_label}
-              className="ml-3"
-            />
-          </li> */}
         </div>
         <DesktopMenu settings={settings} pathname={pathname} />
       </ul>
@@ -150,13 +142,6 @@ function DesktopMenu({
           )}
         </React.Fragment>
       ))}
-      <li>
-        <Button
-          linkField={settings.data.cta_link}
-          label={settings.data.cta_label}
-          className="ml-3"
-        />
-      </li>
     </div>
   );
 }

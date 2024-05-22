@@ -61,21 +61,6 @@
           "placeholder": "",
           "select": null
         }
-      },
-      "cta_label": {
-        "type": "Text",
-        "config": {
-          "label": "cta_label",
-          "placeholder": ""
-        }
-      },
-      "cta_link": {
-        "type": "Link",
-        "config": {
-          "label": "cta_link",
-          "placeholder": "",
-          "select": null
-        }
       }
     },
     "SEO and Metadata": {
