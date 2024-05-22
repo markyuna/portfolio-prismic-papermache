@@ -1,5 +1,5 @@
 // src/app/layout.tsx
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import clsx from "clsx";
 import type { Metadata } from "next";

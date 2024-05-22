@@ -11,7 +11,7 @@ const orcishOpenAIService = new OrcishOpenAIService({
   apiKey: process.env.OPENAI_API_KEY,
   gptModel: "gpt-3.5-turbo",
   gptTemperature: 0.7,
-  gptMaxTokens: 512,
+  gptMaxTokens: 712,
   imageModel: "dall-e-3",
 });
 

@@ -1,5 +1,7 @@
-const nextJest = require("next/jest");
+// Jest configuration
 const path = require("path");
+
+const nextJest = require("next/jest");
 
 const nextDir = "./";
 const customJestConfig = {
