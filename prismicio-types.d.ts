@@ -102,7 +102,7 @@ export type BlogPostDocument<Lang extends string = string> =
     Lang
   >;
 
-type ContactDocumentDataSlicesSlice = never;
+type ContactDocumentDataSlicesSlice = ContactFormSlice;
 
 /**
  * Content for Contact documents
@@ -298,6 +298,7 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | ContactFormSlice
   | ExperienceSlice
   | ContentIndexSlice
   | TechListSlice
@@ -706,6 +707,111 @@ type BiographySliceVariation = BiographySliceDefault;
 export type BiographySlice = prismic.SharedSlice<
   "biography",
   BiographySliceVariation
+>;
+
+/**
+ * Primary content in *ContactForm → Default → Primary*
+ */
+export interface ContactFormSliceDefaultPrimary {
+  /**
+   * title field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * icon field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+
+  /**
+   * name field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * adress field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.adress
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  adress: prismic.KeyTextField;
+
+  /**
+   * message field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.message
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  message: prismic.RichTextField;
+
+  /**
+   * button_text field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * button_link field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for ContactForm Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactFormSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactFormSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContactForm*
+ */
+type ContactFormSliceVariation = ContactFormSliceDefault;
+
+/**
+ * ContactForm Shared Slice
+ *
+ * - **API ID**: `contact_form`
+ * - **Description**: ContactForm
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactFormSlice = prismic.SharedSlice<
+  "contact_form",
+  ContactFormSliceVariation
 >;
 
 /**
@@ -1136,6 +1242,10 @@ declare module "@prismicio/client" {
       BiographySliceDefaultPrimary,
       BiographySliceVariation,
       BiographySliceDefault,
+      ContactFormSlice,
+      ContactFormSliceDefaultPrimary,
+      ContactFormSliceVariation,
+      ContactFormSliceDefault,
       ContentIndexSlice,
       ContentIndexSliceDefaultPrimary,
       ContentIndexSliceVariation,
