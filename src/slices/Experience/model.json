@@ -58,6 +58,14 @@
             "constraint": {},
             "thumbnails": []
           }
+        },
+        "img6": {
+          "type": "Image",
+          "config": {
+            "label": "img6",
+            "constraint": {},
+            "thumbnails": []
+          }
         }
       },
       "items": {

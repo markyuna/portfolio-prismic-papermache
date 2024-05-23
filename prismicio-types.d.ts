@@ -940,6 +940,16 @@ export interface ExperienceSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#image
    */
   img5: prismic.ImageField<never>;
+
+  /**
+   * img6 field in *Experience → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experience.default.primary.img6
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img6: prismic.ImageField<never>;
 }
 
 /**

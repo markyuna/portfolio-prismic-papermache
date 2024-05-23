@@ -35,21 +35,21 @@ export default function Dalle3Image() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center gap-3">
-      <h1 className="p-5 text-2xl font-bold text-white">
+    <div className="flex flex-wrap items-center justify-center gap-3">
+      <h1 className="mt-5 p-2 text-2xl font-bold text-white">
         Créez votre propre sculpture
       </h1>
       <div className="flex flex-wrap items-center justify-center gap-3">
         <input
           type="text"
-          className="w-96 rounded-lg p-3"
+          className="w-full rounded-lg p-2"
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           placeholder="Enter a prompt"
         />
         <button
           type="button"
-          className="rounded-lg bg-blue-500 p-3 text-white"
+          className="w-40 rounded-lg bg-blue-500 p-2 text-white"
           onClick={handleDalle3}
           disabled={loading}
         >
