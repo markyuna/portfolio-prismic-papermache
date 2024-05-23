@@ -1,3 +1,5 @@
+"use server";
+
 // src/app/page.tsx
 import { Metadata } from "next";
 import { SliceZone } from "@prismicio/react";

@@ -3,6 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .background-gradient {
     background: radial-gradient(
       circle at top center,
