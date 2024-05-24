@@ -1,20 +1,39 @@
 // src/lib/
+
 "use server";
 
-import { OrcishOpenAIService } from "orcish-openai-connector";
+import OpenAIApi from "openai";
+import path from "path";
+import fs from "fs";
 
 if (!process.env.OPENAI_API_KEY) {
   throw new Error("No OPENAI API Key");
 }
 
-const orcishOpenAIService = new OrcishOpenAIService({
+const openai = new OpenAIApi({
   apiKey: process.env.OPENAI_API_KEY,
-  gptModel: "gpt-3.5-turbo",
-  gptTemperature: 0.7,
-  gptMaxTokens: 712,
-  imageModel: "dall-e-3",
 });
 
-export async function getDalle3Image(prompt: string) {
-  return await orcishOpenAIService.getDalle3Image(prompt);
+export async function getDalle3Image(prompt: string): Promise<string> {
+  try {
+    const imagePath = path.resolve("./public/tableau.png");
+    const maskPath = path.resolve("./public/mask.png");
+
+    const response = await openai.images.edit({
+      image: fs.createReadStream(imagePath),
+      mask: fs.createReadStream(maskPath),
+      prompt,
+      n: 1,
+      size: "1024x1024",
+    });
+
+    if (!response.data || response.data.length === 0 || !response.data[0].url) {
+      throw new Error("Failed to retrieve image from OpenAI");
+    }
+
+    return response.data[0].url;
+  } catch (error) {
+    console.error("Error generating image:", error);
+    throw error;
+  }
 }

@@ -1,35 +1,27 @@
 "use client";
 
-// Importamos los módulos necesarios
 import React, { useState } from "react";
 import { getDalle3Image } from "../lib/openai";
 import Image from "next/image";
 
 export default function Dalle3Image() {
-  // Definimos los estados para el prompt, resultado, carga y errores
   const [prompt, setPrompt] = useState("");
   const [aiResult, setAiResult] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Función para manejar la generación de imágenes
   const handleDalle3 = async () => {
-    // Activamos el indicador de carga y limpiamos cualquier error previo
     setLoading(true);
     setError("");
 
     try {
-      // Obtenemos la imagen generada por la IA utilizando el prompt proporcionado
       const result = await getDalle3Image(prompt);
-      // Establecemos el resultado de la IA y desactivamos el indicador de carga
       setAiResult(result);
     } catch (error) {
-      // En caso de error, mostramos un mensaje de error
       setError(
         "Error al generar la imagen. Por favor, inténtalo de nuevo más tarde.",
       );
     } finally {
-      // Desactivamos el indicador de carga después de completar la operación
       setLoading(false);
     }
   };
@@ -61,9 +53,7 @@ export default function Dalle3Image() {
           <h2 className="text-2xl font-bold" style={{ color: "#fff" }}>
             Loading ...
           </h2>
-          {/* Mostramos cualquier error */}
           {error && <p style={{ color: "red" }}>{error}</p>}
-          {/* Mostramos un indicador de carga */}
           <Image
             src={"/Spinner.gif"}
             width={80}
@@ -74,7 +64,6 @@ export default function Dalle3Image() {
           />
         </div>
       )}
-      {/* Mostramos la imagen generada por la IA */}
       {aiResult && (
         <>
           <Image
@@ -84,7 +73,6 @@ export default function Dalle3Image() {
             width={500}
             src={aiResult}
           />
-          {/* Botón para limpiar la imagen generada */}
           <button
             type="button"
             className="rounded-lg bg-blue-500 p-3 text-white"
