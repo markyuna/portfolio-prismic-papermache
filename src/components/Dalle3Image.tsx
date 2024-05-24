@@ -8,7 +8,7 @@ export default function Dalle3Image() {
   const [prompt, setPrompt] = useState("");
   const [aiResult, setAiResult] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState<string>("");
 
   const handleDalle3 = async () => {
     setLoading(true);
@@ -18,9 +18,7 @@ export default function Dalle3Image() {
       const result = await getDalle3Image(prompt);
       setAiResult(result);
     } catch (error) {
-      setError(
-        "Error al generar la imagen. Por favor, inténtalo de nuevo más tarde.",
-      );
+      setError(`Error al generar la imagen: ${(error as Error).message}`);
     } finally {
       setLoading(false);
     }

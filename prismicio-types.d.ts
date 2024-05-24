@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type BlogPostDocumentDataSlicesSlice = TextBlockSlice;
+type BlogPostDocumentDataSlicesSlice = TextBlockSlice | ContentIndexSlice;
 
 /**
  * Content for Blog Post documents
@@ -232,7 +232,11 @@ export type CreaartDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomepageDocumentDataSlicesSlice = ExperienceSlice | HeroSlice;
+type HomepageDocumentDataSlicesSlice =
+  | GalerieSlice
+  | CardSlice
+  | ExperienceSlice
+  | HeroSlice;
 
 /**
  * Content for Homepage documents
@@ -688,6 +692,88 @@ export type BiographySlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Card → Default → Primary*
+ */
+export interface CardSliceDefaultPrimary {
+  /**
+   * header field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.header
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  header: prismic.KeyTextField;
+
+  /**
+   * description field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Button Text field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+
+  /**
+   * image field in *Card → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: card.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for Card Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CardSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Card*
+ */
+type CardSliceVariation = CardSliceDefault;
+
+/**
+ * Card Shared Slice
+ *
+ * - **API ID**: `card`
+ * - **Description**: Card
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CardSlice = prismic.SharedSlice<"card", CardSliceVariation>;
+
+/**
  * Primary content in *ContactForm → Default → Primary*
  */
 export interface ContactFormSliceDefaultPrimary {
@@ -1018,6 +1104,216 @@ export type ExperienceSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Galerie → Default → Primary → image*
+ */
+export interface GalerieSliceDefaultPrimaryImageItem {
+  /**
+   * img1 field in *Galerie → Default → Primary → image*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galerie.default.primary.image[].img1
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img1: prismic.ImageField<never>;
+
+  /**
+   * img2 field in *Galerie → Default → Primary → image*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galerie.default.primary.image[].img2
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img2: prismic.ImageField<never>;
+
+  /**
+   * img3 field in *Galerie → Default → Primary → image*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galerie.default.primary.image[].img3
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img3: prismic.ImageField<never>;
+
+  /**
+   * img4 field in *Galerie → Default → Primary → image*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galerie.default.primary.image[].img4
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img4: prismic.ImageField<never>;
+
+  /**
+   * img5 field in *Galerie → Default → Primary → image*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galerie.default.primary.image[].img5
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img5: prismic.ImageField<never>;
+
+  /**
+   * img6 field in *Galerie → Default → Primary → image*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galerie.default.primary.image[].img6
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img6: prismic.ImageField<never>;
+
+  /**
+   * img7 field in *Galerie → Default → Primary → image*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galerie.default.primary.image[].img7
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img7: prismic.ImageField<never>;
+
+  /**
+   * img8 field in *Galerie → Default → Primary → image*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galerie.default.primary.image[].img8
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img8: prismic.ImageField<never>;
+
+  /**
+   * img9 field in *Galerie → Default → Primary → image*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galerie.default.primary.image[].img9
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img9: prismic.ImageField<never>;
+
+  /**
+   * img10 field in *Galerie → Default → Primary → image*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galerie.default.primary.image[].img10
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img10: prismic.ImageField<never>;
+
+  /**
+   * img11 field in *Galerie → Default → Primary → image*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galerie.default.primary.image[].img11
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img11: prismic.ImageField<never>;
+
+  /**
+   * img12 field in *Galerie → Default → Primary → image*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galerie.default.primary.image[].img12
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  img12: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *Galerie → Default → Primary*
+ */
+export interface GalerieSliceDefaultPrimary {
+  /**
+   * tag_line field in *Galerie → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galerie.default.primary.tag_line
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tag_line: prismic.KeyTextField;
+
+  /**
+   * heading field in *Galerie → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galerie.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+
+  /**
+   * image field in *Galerie → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galerie.default.primary.image[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  image: prismic.GroupField<Simplify<GalerieSliceDefaultPrimaryImageItem>>;
+
+  /**
+   * Button Text field in *Galerie → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galerie.default.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *Galerie → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: galerie.default.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for Galerie Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GalerieSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GalerieSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Galerie*
+ */
+type GalerieSliceVariation = GalerieSliceDefault;
+
+/**
+ * Galerie Shared Slice
+ *
+ * - **API ID**: `galerie`
+ * - **Description**: Galerie
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GalerieSlice = prismic.SharedSlice<
+  "galerie",
+  GalerieSliceVariation
+>;
+
+/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
@@ -1230,6 +1526,10 @@ declare module "@prismicio/client" {
       BiographySliceDefaultPrimary,
       BiographySliceVariation,
       BiographySliceDefault,
+      CardSlice,
+      CardSliceDefaultPrimary,
+      CardSliceVariation,
+      CardSliceDefault,
       ContactFormSlice,
       ContactFormSliceDefaultPrimary,
       ContactFormSliceVariation,
@@ -1243,6 +1543,11 @@ declare module "@prismicio/client" {
       ExperienceSliceDefaultItem,
       ExperienceSliceVariation,
       ExperienceSliceDefault,
+      GalerieSlice,
+      GalerieSliceDefaultPrimaryImageItem,
+      GalerieSliceDefaultPrimary,
+      GalerieSliceVariation,
+      GalerieSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,

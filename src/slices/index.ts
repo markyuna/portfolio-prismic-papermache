@@ -4,9 +4,11 @@ import dynamic from "next/dynamic";
 
 export const components = {
   biography: dynamic(() => import("./Biography")),
+  card: dynamic(() => import("./Card")),
   contact_form: dynamic(() => import("./ContactForm")),
   content_index: dynamic(() => import("./ContentIndex")),
   experience: dynamic(() => import("./Experience")),
+  galerie: dynamic(() => import("./Galerie")),
   hero: dynamic(() => import("./Hero")),
   tech_list: dynamic(() => import("./TechList")),
   text_block: dynamic(() => import("./TextBlock")),

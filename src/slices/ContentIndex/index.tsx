@@ -19,7 +19,7 @@ const ContentIndex = async ({
   const blogPosts = await client.getAllByType("blog_post");
   const projects = await client.getAllByType("project");
 
-  const contentType = slice.primary.content_type || "Blog";
+  const contentType = slice.primary.content_type ?? "Blog";
 
   const items = slice.primary.content_type === "Blog" ? blogPosts : projects;
 
@@ -28,7 +28,7 @@ const ContentIndex = async ({
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <Heading size="md" className="mb-8 text-center">
+      <Heading size="md" className="mb-8">
         {slice.primary.heading}
       </Heading>
       {isFilled.richText(slice.primary.description) && (

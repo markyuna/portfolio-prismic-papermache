@@ -67,7 +67,6 @@ const Experience = ({ slice }: ExperienceProps): JSX.Element => {
                 className="not-prose h-auto w-full max-w-xs rounded-md"
               />
             </div>
-
             <Dalle3Image />
           </div>
         </div>
