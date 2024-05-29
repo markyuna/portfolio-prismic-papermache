@@ -22,7 +22,7 @@ const Galerie = ({ slice }: GalerieProps): JSX.Element => {
         <span className="block bg-gradient-to-tr from-yellow-500 via-yellow-200 to-yellow-500 bg-clip-text text-center text-2xl font-bold uppercase tracking-wide text-transparent md:col-span-3 md:mb-6 md:text-3xl">
           {slice.primary.tag_line}
         </span>
-        <Heading as="h3" size="sm" className="text-center">
+        <Heading as="h2" size="sm" className="text-center">
           {slice.primary.heading}
         </Heading>
         <div className="mt-4 md:col-span-4">

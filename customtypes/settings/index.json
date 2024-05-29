@@ -33,6 +33,14 @@
                 "label": "Label",
                 "placeholder": ""
               }
+            },
+            "traduc": {
+              "type": "Select",
+              "config": {
+                "label": "Traduc",
+                "placeholder": "FR",
+                "options": ["EN", "ES"]
+              }
             }
           }
         }

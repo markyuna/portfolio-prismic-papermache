@@ -488,6 +488,16 @@ export interface SettingsDocumentDataNavItemsItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label: prismic.KeyTextField;
+
+  /**
+   * Traduc field in *Settings → Nav Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: FR
+   * - **API ID Path**: settings.nav_items[].traduc
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  traduc: prismic.SelectField<"EN" | "ES">;
 }
 
 /**
