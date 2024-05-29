@@ -6,12 +6,6 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import Hotjar from '@hotjar/browser';
-
-const siteId = 5004317;
-const hotjarVersion = 6;
-
-Hotjar.init(siteId, hotjarVersion);
 
 export default async function Page() {
   const client = createClient();
