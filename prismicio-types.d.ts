@@ -4,7 +4,10 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type BlogPostDocumentDataSlicesSlice = TextBlockSlice | ContentIndexSlice;
+type BlogPostDocumentDataSlicesSlice =
+  | CarouselSlice
+  | TextBlockSlice
+  | ContentIndexSlice;
 
 /**
  * Content for Blog Post documents
@@ -302,6 +305,7 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | CarouselSlice
   | ContactFormSlice
   | ExperienceSlice
   | ContentIndexSlice
@@ -367,7 +371,7 @@ interface PageDocumentData {
 export type PageDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PageDocumentData>, "page", Lang>;
 
-type ProjectDocumentDataSlicesSlice = TextBlockSlice;
+type ProjectDocumentDataSlicesSlice = CarouselSlice | TextBlockSlice;
 
 /**
  * Content for Sculptures documents
@@ -782,6 +786,121 @@ type CardSliceVariation = CardSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type CardSlice = prismic.SharedSlice<"card", CardSliceVariation>;
+
+/**
+ * Primary content in *Carousel → Default → Primary*
+ */
+export interface CarouselSliceDefaultPrimary {
+  /**
+   * Description One field in *Carousel → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel.default.primary.description_one
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description_one: prismic.RichTextField;
+
+  /**
+   * Image One field in *Carousel → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel.default.primary.image_one
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_one: prismic.ImageField<never>;
+
+  /**
+   * DescriptionTwo field in *Carousel → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel.default.primary.descriptiontwo
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  descriptiontwo: prismic.RichTextField;
+
+  /**
+   * Image Two field in *Carousel → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel.default.primary.image_two
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_two: prismic.ImageField<never>;
+
+  /**
+   * DescriptionThree field in *Carousel → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel.default.primary.descriptionthree
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  descriptionthree: prismic.RichTextField;
+
+  /**
+   * Image Three field in *Carousel → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel.default.primary.image_three
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image_three: prismic.ImageField<never>;
+
+  /**
+   * Button Text field in *Carousel → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel.default.primary.button_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_text: prismic.KeyTextField;
+
+  /**
+   * Button Link field in *Carousel → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: carousel.default.primary.button_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  button_link: prismic.LinkField;
+}
+
+/**
+ * Default variation for Carousel Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarouselSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CarouselSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Carousel*
+ */
+type CarouselSliceVariation = CarouselSliceDefault;
+
+/**
+ * Carousel Shared Slice
+ *
+ * - **API ID**: `carousel`
+ * - **Description**: Carousel
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CarouselSlice = prismic.SharedSlice<
+  "carousel",
+  CarouselSliceVariation
+>;
 
 /**
  * Primary content in *ContactForm → Default → Primary*
@@ -1540,6 +1659,10 @@ declare module "@prismicio/client" {
       CardSliceDefaultPrimary,
       CardSliceVariation,
       CardSliceDefault,
+      CarouselSlice,
+      CarouselSliceDefaultPrimary,
+      CarouselSliceVariation,
+      CarouselSliceDefault,
       ContactFormSlice,
       ContactFormSliceDefaultPrimary,
       ContactFormSliceVariation,
