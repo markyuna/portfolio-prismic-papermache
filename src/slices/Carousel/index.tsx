@@ -19,12 +19,14 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
   const [transitionDirection, setTransitionDirection] = useState("next");
 
   const handleNext = () => {
+    setTransitionDirection("next");
     setActiveSlide((prevActiveSlide) =>
       prevActiveSlide === 2 ? prevActiveSlide : prevActiveSlide + 1,
     );
   };
 
   const handlePrevious = () => {
+    setTransitionDirection("previous");
     setActiveSlide((prevActiveSlide) =>
       prevActiveSlide === 0 ? prevActiveSlide : prevActiveSlide - 1,
     );
@@ -44,31 +46,32 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
   };
 
   const renderImages = () => {
-    switch (activeSlide) {
-      case 0:
-        return (
-          <PrismicNextImage
-            className="rounded-2xl border-4 border-red-500"
-            field={slice.primary.image_one}
-          />
-        );
-      case 1:
-        return (
-          <PrismicNextImage
-            className="rounded-2xl border-4 border-red-500"
-            field={slice.primary.image_two}
-          />
-        );
-      case 2:
-        return (
-          <PrismicNextImage
-            className="rounded-2xl border-4 border-red-500"
-            field={slice.primary.image_three}
-          />
-        );
-      default:
-        return null;
-    }
+    const imageFields = [
+      slice.primary.image_one,
+      slice.primary.image_two,
+      slice.primary.image_three,
+    ];
+
+    return imageFields.map((imageField, index) => (
+      <motion.div
+        key={imageField.id}
+        className="absolute flex h-56 w-64 flex-col items-center justify-center rounded-2xl border-4"
+        animate={{
+          opacity: activeSlide === index ? 1 : 0,
+          x: activeSlide === index ? "0px" : `${(index - activeSlide) * 96}px`,
+          scale: activeSlide === index ? 1 : 0.8,
+        }}
+        transition={{
+          duration: 0.5,
+          ease: "easeInOut",
+        }}
+      >
+        <PrismicNextImage
+          className="rounded-2xl border-4 border-red-500"
+          field={imageField}
+        />
+      </motion.div>
+    ));
   };
 
   const textVariants = {
@@ -84,7 +87,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
     },
   };
 
-  // definig stagger text effect
+  // Definiendo el efecto de texto escalonado
   const textContainerVariant = {
     hidden: {},
     visible: {
@@ -110,30 +113,11 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
         <div className="mb-6 md:mb-0 md:w-1/2">
           <motion.div
             variants={textVariants}
-            className="prose prose-xl prose-slate prose-invert mt-20"
+            className="prose prose-xl prose-slate prose-invert mt-10"
           >
             {renderDescription()}
           </motion.div>
-        </div>
-        <div className="relative flex items-center justify-center md:w-1/2">
-          <motion.div
-            className="h-auto w-80"
-            animate={{
-              opacity:
-                activeSlide === 0 ? 1 : activeSlide === 1 ? 0 : 0,
-              x:
-                activeSlide === 0 ? "0px" : activeSlide === 1 ? "96px" : "96px",
-              scale: activeSlide === 0 ? 1 : activeSlide === 1 ? 1.2 : 1.2,
-            }}
-            transition={{
-              duration: 0.5,
-              delay: 0,
-              ease: "easeInOut",
-            }}
-          >
-            {renderImages()}
-          </motion.div>
-          <div className="absolute bottom-0 left-0 z-30 flex w-40 translate-y-20 transform justify-between">
+          <div className="bottom-4 flex w-full justify-around p-10 px-10 md:px-4">
             <button
               onClick={handlePrevious}
               disabled={activeSlide === 0}
@@ -164,6 +148,11 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
                 }`}
               />
             </button>
+          </div>
+        </div>
+        <div className="relative flex h-96 flex-col items-center justify-center md:w-1/2">
+          <div className="relative flex h-full w-full items-center justify-center">
+            {renderImages()}
           </div>
         </div>
       </motion.div>
