@@ -4,6 +4,7 @@ import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { PrismicNextImage } from "@prismicio/next";
 import { GrLinkPrevious, GrLinkNext } from "react-icons/gr";
+import { motion } from "framer-motion";
 
 /**
  * Props for `Carousel`.
@@ -15,6 +16,7 @@ export type CarouselProps = SliceComponentProps<Content.CarouselSlice>;
  */
 const Carousel = ({ slice }: CarouselProps): JSX.Element => {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [transitionDirection, setTransitionDirection] = useState("next");
 
   const handleNext = () => {
     setActiveSlide((prevActiveSlide) =>
@@ -69,20 +71,68 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
     }
   };
 
+  const textVariants = {
+    hidden: {
+      opacity: 0,
+      x: transitionDirection === "next" ? 100 : -100,
+      transition: { duration: 0.5, ease: "easeInOut" },
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.5, ease: "easeInOut" },
+    },
+  };
+
+  // definig stagger text effect
+  const textContainerVariant = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="p-5"
     >
-      <div className="flex flex-col items-center md:flex-row md:items-start md:justify-between">
+      <motion.div
+        className="flex flex-col items-center md:flex-row md:items-start md:justify-between"
+        key={activeSlide}
+        variants={textContainerVariant}
+        initial="hidden"
+        animate="visible"
+      >
         <div className="mb-6 md:mb-0 md:w-1/2">
-          <div className="prose prose-xl prose-slate prose-invert mt-20">
+          <motion.div
+            variants={textVariants}
+            className="prose prose-xl prose-slate prose-invert mt-20"
+          >
             {renderDescription()}
-          </div>
+          </motion.div>
         </div>
         <div className="relative flex items-center justify-center md:w-1/2">
-          <div className="h-auto w-80">{renderImages()}</div>
+          <motion.div
+            className="h-auto w-80"
+            animate={{
+              opacity:
+                activeSlide === 0 ? 1 : activeSlide === 1 ? 0 : 0,
+              x:
+                activeSlide === 0 ? "0px" : activeSlide === 1 ? "96px" : "96px",
+              scale: activeSlide === 0 ? 1 : activeSlide === 1 ? 1.2 : 1.2,
+            }}
+            transition={{
+              duration: 0.5,
+              delay: 0,
+              ease: "easeInOut",
+            }}
+          >
+            {renderImages()}
+          </motion.div>
           <div className="absolute bottom-0 left-0 z-30 flex w-40 translate-y-20 transform justify-between">
             <button
               onClick={handlePrevious}
@@ -116,7 +166,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
             </button>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
