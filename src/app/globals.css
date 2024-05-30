@@ -37,7 +37,7 @@ iframe {
 /* ///// Styling of the page  ////// */
 
 .page h1 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 500;
   letter-spacing: 0.028em;
   margin: 0;
@@ -61,3 +61,10 @@ iframe {
   position: absolute;
 }
 
+
+@layer utilities {
+  .border-gradient {
+    @apply rounded-2xl border-8;
+    border-image: linear-gradient(45deg, #8a2be2, #00c6ff) 1;
+  }
+}

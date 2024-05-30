@@ -55,7 +55,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
     return imageFields.map((imageField, index) => (
       <motion.div
         key={imageField.id}
-        className="absolute flex h-56 w-64 flex-col items-center justify-center rounded-2xl border-4"
+        className="absolute flex h-96 w-96 flex-col justify-center"
         animate={{
           opacity: activeSlide === index ? 1 : 0,
           x: activeSlide === index ? "0px" : `${(index - activeSlide) * 96}px`,
@@ -67,7 +67,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
         }}
       >
         <PrismicNextImage
-          className="rounded-2xl border-4 border-red-500"
+          className="... rounded-2xl border-8 border-indigo-600/[.55]"
           field={imageField}
         />
       </motion.div>
@@ -101,7 +101,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="p-5"
+      className="p-2"
     >
       <motion.div
         className="flex flex-col items-center md:flex-row md:items-start md:justify-between"
@@ -110,26 +110,26 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
         initial="hidden"
         animate="visible"
       >
-        <div className="mb-6 md:mb-0 md:w-1/2">
+        <div className="md:mb-0 md:w-1/2">
           <motion.div
             variants={textVariants}
             className="prose prose-xl prose-slate prose-invert mt-10"
           >
             {renderDescription()}
           </motion.div>
-          <div className="bottom-4 flex w-full justify-around p-10 px-10 md:px-4">
+          <div className="bottom-4 flex w-full justify-around p-5 md:px-4">
             <button
               onClick={handlePrevious}
               disabled={activeSlide === 0}
               className={`flex h-16 w-16 items-center justify-center rounded-full border-2 bg-transparent transition duration-300 ease-in-out ${
                 activeSlide === 0
                   ? "cursor-not-allowed border-transparent"
-                  : "border-transparent hover:border-red-500"
+                  : "border-transparent hover:border-indigo-600"
               }`}
             >
               <GrLinkPrevious
                 className={`${
-                  activeSlide === 0 ? "text-gray-500" : "text-red-500"
+                  activeSlide === 0 ? "text-gray-500" : "text-indigo-600"
                 }`}
               />
             </button>
@@ -139,12 +139,12 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
               className={`flex h-16 w-16 items-center justify-center rounded-full border-2 bg-transparent transition duration-300 ease-in-out ${
                 activeSlide === 2
                   ? "cursor-not-allowed border-transparent"
-                  : "border-transparent hover:border-red-500"
+                  : "border-transparent hover:border-indigo-600"
               }`}
             >
               <GrLinkNext
                 className={`${
-                  activeSlide === 2 ? "text-gray-500" : "text-red-500"
+                  activeSlide === 2 ? "text-gray-500" : "text-indigo-600"
                 }`}
               />
             </button>
