@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useRef, useState } from "react";
 import Bounded from "@/components/Bounded";
 import Heading from "@/components/Heading";
 import { Content } from "@prismicio/client";
@@ -8,6 +9,7 @@ import { SliceComponentProps } from "@prismicio/react";
 import SubmitBtn from "../../components/submit-btn";
 import toast from "react-hot-toast";
 import { sendEmail } from "../../actions/sendEmail";
+
 /**
  * Props for `ContactForm`.
  */
@@ -17,6 +19,26 @@ export type ContactFormProps = SliceComponentProps<Content.ContactFormSlice>;
  * Component for "ContactForm" Slices.
  */
 const ContactForm = ({ slice }: ContactFormProps): JSX.Element => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    const formData = new FormData(event.currentTarget);
+    const { error } = await sendEmail(formData);
+    setIsSubmitting(false);
+
+    if (error) {
+      toast.error(error);
+      return;
+    }
+    toast.success("Email sent successfully!");
+    if (formRef.current) {
+      formRef.current.reset();
+    }
+  };
+
   return (
     <section
       data-slice-type={slice.slice_type}
@@ -34,15 +56,9 @@ const ContactForm = ({ slice }: ContactFormProps): JSX.Element => {
         <Bounded as="div" className="flex flex-col items-center lg:flex-row">
           <div className="lg:mr-8 lg:w-1/2">
             <form
+              ref={formRef}
               className="mt-10 flex w-full max-w-lg flex-col dark:text-black"
-              action={async (formData) => {
-                const { error } = await sendEmail(formData);
-                if (error) {
-                  toast.error(error);
-                  return;
-                }
-                toast.success("Email sent successfully!");
-              }}
+              onSubmit={handleSubmit}
             >
               <div className="mb-4">
                 <label className="mb-2 block text-slate-300" htmlFor="name">
@@ -81,7 +97,7 @@ const ContactForm = ({ slice }: ContactFormProps): JSX.Element => {
                   maxLength={5000}
                 />
               </div>
-              <SubmitBtn />
+              <SubmitBtn isSubmitting={isSubmitting} />
             </form>
           </div>
         </Bounded>

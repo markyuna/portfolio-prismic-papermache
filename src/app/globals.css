@@ -1,60 +1,58 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 .background-gradient {
-    background: radial-gradient(
-      circle at top center,
-      hsla(222, 80%, 60%, 0.5) 0%,
-      hsla(222, 0%, 0%, 0) 50%,
-      hsla(222, 0%, 0%, 0) 100%
-    );
+  background: radial-gradient(
+    circle at top center,
+    hsla(222, 80%, 60%, 0.5) 0%,
+    hsla(222, 0%, 0%, 0) 50%,
+    hsla(222, 0%, 0%, 0) 100%
+  );
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+}
+
+:root {
+  --color-primary: #ffce00;
+  --color-secondary: #007521;
+  --color-action: #ff4242;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+/* ///// Styling of the page  ////// */
+
+.page h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.028em;
+  margin: 0;
+}
+
+@layer components {
+  .btn {
+    @apply flex w-fit rounded-lg bg-gray-500 px-3 py-1 text-sm text-white;
   }
 
-  #root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Roboto', sans-serif;
+  .btn-action {
+    @apply bg-[var(--color-action)];
   }
-  
-  :root {
-    --color-primary: #ffce00;
-    --color-secondary: #007521;
-    --color-action: #ff4242;
-  }
-  
-  iframe {
-    max-width: 100%;
-  }
-  
-  /* ///// Styling of the page  ////// */
-  
-  .page h1 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    letter-spacing: 0.028em;
-    margin: 0;
-  }
-  
-  @layer components {
-    .btn {
-      @apply bg-gray-500 flex py-1 px-3 text-white rounded-lg text-sm w-fit;
-    }
-  
-    .btn-action {
-      @apply bg-[var(--color-action)];
-    }
-  }
-  
+}
+
 .pointer-events-none {
   pointer-events: none;
 }
@@ -62,4 +60,3 @@
 .absolute {
   position: absolute;
 }
-

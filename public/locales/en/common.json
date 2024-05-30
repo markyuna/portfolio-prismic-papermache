@@ -1,9 +1,8 @@
 {
-    "navbar": {
-      "home": "Home",
-      "about": "About",
-      "contact": "Contact",
-      "changeLanguage": "EN"
-    }
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "changeLanguage": "EN"
   }
-  
+}

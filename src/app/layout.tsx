@@ -12,6 +12,7 @@ import Header from "@/components/Header";
 
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import HotjarInit from "@/components/HotjarInit";
+import { Toaster } from "react-hot-toast";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -43,6 +44,7 @@ export default function RootLayout({
         {children}
         <div className="background-gradient absolute inset-0 -z-50 max-h-screen" />
         <div className="pointer-events-none absolute inset-0 -z-40 h-full bg-[url('/noisetexture.jpg')] opacity-20 mix-blend-soft-light"></div>
+        <Toaster position="bottom-center" reverseOrder={false} />
         <PrismicPreview repositoryName={repositoryName} />
         <Footer />
       </body>

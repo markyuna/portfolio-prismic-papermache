@@ -1,20 +1,20 @@
 [
-	{
-		"__TYPE__": "SharedSliceContent",
-		"variation": "default",
-		"primary": {
-			"text": {
-				"__TYPE__": "StructuredTextContent",
-				"value": [
-					{
-						"type": "paragraph",
-						"content": {
-							"text": "Esse tempor proident nostrud occaecat. Velit reprehenderit enim ullamco est tempor consequat sint. Et laboris est minim excepteur exercitation ea pariatur."
-						}
-					}
-				]
-			}
-		},
-		"items": []
-	}
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "text": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Esse tempor proident nostrud occaecat. Velit reprehenderit enim ullamco est tempor consequat sint. Et laboris est minim excepteur exercitation ea pariatur."
+            }
+          }
+        ]
+      }
+    },
+    "items": []
+  }
 ]
