@@ -33,7 +33,7 @@ const ContactForm = ({ slice }: ContactFormProps): JSX.Element => {
       toast.error(error);
       return;
     }
-    toast.success("Email sent successfully!");
+    toast.success("E-mail envoyé avec succès!");
     if (formRef.current) {
       formRef.current.reset();
     }
