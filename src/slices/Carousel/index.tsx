@@ -55,7 +55,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
     return imageFields.map((imageField, index) => (
       <motion.div
         key={imageField.id}
-        className="absolute flex h-96 w-96 flex-col justify-center"
+        className="absolute flex h-72 w-72 flex-col justify-center"
         animate={{
           opacity: activeSlide === index ? 1 : 0,
           x: activeSlide === index ? "0px" : `${(index - activeSlide) * 96}px`,
@@ -151,7 +151,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           </div>
         </div>
         <div className="relative flex h-96 flex-col items-center justify-center md:w-1/2">
-          <div className="relative flex h-full w-full items-center justify-center">
+          <div className="relative flex h-auto w-full transform items-center justify-center rounded-md object-cover transition-transform duration-300 hover:scale-125">
             {renderImages()}
           </div>
         </div>
