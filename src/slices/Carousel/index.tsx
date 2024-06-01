@@ -67,7 +67,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
         }}
       >
         <PrismicNextImage
-          className="... rounded-2xl border-8 border-indigo-600/[.55]"
+          className="... rounded-2xl border-8 border-indigo-600"
           field={imageField}
         />
       </motion.div>
@@ -151,7 +151,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
           </div>
         </div>
         <div className="relative flex h-96 flex-col items-center justify-center md:w-1/2">
-          <div className="relative flex h-auto w-full translate-x-4 skew-y-3 transform items-center justify-center rounded-md object-cover transition-transform duration-300 hover:scale-125 md:transform-none">
+          <div className="relative flex h-auto w-full transform items-center justify-center rounded-md object-cover transition-transform duration-300 hover:scale-125 md:transform-none">
             {renderImages()}
           </div>
         </div>
