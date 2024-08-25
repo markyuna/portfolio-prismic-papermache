@@ -25,7 +25,12 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "src/app/i18n.ts",
+    "src/components/LanguageChanger.tsx",
+    "src/components/ThemeProvider.tsx",
+    "src/components/TranslationsProvider.tsx",
+    "src/utils/initTranslations.ts"
   ],
   "exclude": ["node_modules", "dist", ".next"]
 }
