@@ -6,6 +6,7 @@ export const components = {
   biography: dynamic(() => import("./Biography")),
   card: dynamic(() => import("./Card")),
   carousel: dynamic(() => import("./Carousel")),
+  change_languaje: dynamic(() => import("./ChangeLanguaje")),
   contact_form: dynamic(() => import("./ContactForm")),
   content_index: dynamic(() => import("./ContentIndex")),
   experience: dynamic(() => import("./Experience")),

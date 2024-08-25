@@ -45,26 +45,31 @@ const Experience = ({ slice }: ExperienceProps): JSX.Element => {
                 field={slice.primary.img2}
                 imgixParams={{ w: 150, h: 150 }} // Ajusta el tamaño de la imagen
                 className="not-prose h-auto w-full max-w-xs rounded-md"
+                alt=""
               />
               <PrismicNextImage
                 field={slice.primary.img3}
                 imgixParams={{ w: 150, h: 150 }} // Ajusta el tamaño de la imagen
                 className="not-prose h-auto w-full max-w-xs rounded-md"
+                alt=""
               />
               <PrismicNextImage
                 field={slice.primary.img4}
                 imgixParams={{ w: 150, h: 150 }} // Ajusta el tamaño de la imagen
                 className="not-prose h-auto w-full max-w-xs rounded-md"
+                alt=""
               />
               <PrismicNextImage
                 field={slice.primary.img5}
                 imgixParams={{ w: 150, h: 150 }} // Ajusta el tamaño de la imagen
                 className="not-prose h-auto w-full max-w-xs rounded-md"
+                alt=""
               />
               <PrismicNextImage
                 field={slice.primary.img6}
                 imgixParams={{ w: 150, h: 150 }} // Ajusta el tamaño de la imagen
                 className="not-prose h-auto w-full max-w-xs rounded-md"
+                alt=""
               />
             </div>
             <Dalle3Image />

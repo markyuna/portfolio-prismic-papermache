@@ -60,7 +60,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     return name.split("").map((letter, index) => (
       <span
         key={index}
-        className={`name-animation name-animation-${key}-index inline-block opacity-0 `}
+        className={`name-animation name-animation-${key}-index inline-block opacity-0`}
       >
         {letter}
       </span>
@@ -75,17 +75,17 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
     >
       <div className="grid min-h-[70vh] grid-cols-1 items-center md:grid-cols-2">
         <Shapes />
-        <div className="col-start-1 md:row-start-1 " data-speed=".2">
+        <div className="col-start-1 md:row-start-1" data-speed=".2">
           <h1
             className="mb-8 text-[clamp(3rem,20vmin,20rem)] font-extrabold leading-none tracking-tighter"
             aria-label={
               slice.primary.first_name + " " + slice.primary.last_name
             }
           >
-            <span className="block text-slate-300 ">
+            <span className="block text-slate-300">
               {renderLetters(slice.primary.first_name, "first")}
             </span>
-            <span className="-mt-[.2em] block text-slate-500  ">
+            <span className="-mt-[.2em] block text-slate-500">
               {renderLetters(slice.primary.last_name, "last")}
             </span>
           </h1>

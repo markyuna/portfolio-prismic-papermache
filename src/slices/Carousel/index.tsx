@@ -69,6 +69,7 @@ const Carousel = ({ slice }: CarouselProps): JSX.Element => {
         <PrismicNextImage
           className="... rounded-2xl border-8 border-indigo-600"
           field={imageField}
+          alt=""
         />
       </motion.div>
     ));

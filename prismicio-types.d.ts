@@ -903,6 +903,36 @@ export type CarouselSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Default variation for ChangeLanguaje Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ChangeLanguajeSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *ChangeLanguaje*
+ */
+type ChangeLanguajeSliceVariation = ChangeLanguajeSliceDefault;
+
+/**
+ * ChangeLanguaje Shared Slice
+ *
+ * - **API ID**: `change_languaje`
+ * - **Description**: ChangeLanguaje
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ChangeLanguajeSlice = prismic.SharedSlice<
+  "change_languaje",
+  ChangeLanguajeSliceVariation
+>;
+
+/**
  * Primary content in *ContactForm → Default → Primary*
  */
 export interface ContactFormSliceDefaultPrimary {
@@ -1663,6 +1693,9 @@ declare module "@prismicio/client" {
       CarouselSliceDefaultPrimary,
       CarouselSliceVariation,
       CarouselSliceDefault,
+      ChangeLanguajeSlice,
+      ChangeLanguajeSliceVariation,
+      ChangeLanguajeSliceDefault,
       ContactFormSlice,
       ContactFormSliceDefaultPrimary,
       ContactFormSliceVariation,

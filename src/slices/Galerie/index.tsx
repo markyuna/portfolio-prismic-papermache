@@ -36,61 +36,73 @@ const Galerie = ({ slice }: GalerieProps): JSX.Element => {
                   field={item.img1}
                   imgixParams={{ w: 400, h: 400 }}
                   className="mb-4 h-auto w-full transform rounded-md object-cover transition-transform duration-300 hover:scale-105"
+                  alt=""
                 />
                 <PrismicNextImage
                   field={item.img2}
                   imgixParams={{ w: 400, h: 400 }}
                   className="mb-4 h-auto w-full transform rounded-md object-cover transition-transform duration-300 hover:scale-105"
+                  alt=""
                 />
                 <PrismicNextImage
                   field={item.img3}
                   imgixParams={{ w: 400, h: 400 }}
                   className="mb-4 h-auto w-full transform rounded-md object-cover transition-transform duration-300 hover:scale-105"
+                  alt=""
                 />
                 <PrismicNextImage
                   field={item.img4}
                   imgixParams={{ w: 400, h: 400 }}
                   className="mb-4 h-auto w-full transform rounded-md object-cover transition-transform duration-300 hover:scale-105"
+                  alt=""
                 />
                 <PrismicNextImage
                   field={item.img5}
                   imgixParams={{ w: 400, h: 400 }}
                   className="mb-4 h-auto w-full transform rounded-md object-cover transition-transform duration-300 hover:scale-105"
+                  alt=""
                 />
                 <PrismicNextImage
                   field={item.img6}
                   imgixParams={{ w: 400, h: 400 }}
                   className="mb-4 h-auto w-full transform rounded-md object-cover transition-transform duration-300 hover:scale-105"
+                  alt=""
                 />
                 <PrismicNextImage
                   field={item.img7}
                   imgixParams={{ w: 400, h: 400 }}
                   className="mb-4 h-auto w-full transform rounded-md object-cover transition-transform duration-300 hover:scale-105"
+                  alt=""
                 />
                 <PrismicNextImage
                   field={item.img8}
                   imgixParams={{ w: 400, h: 400 }}
                   className="mb-4 h-auto w-full transform rounded-md object-cover transition-transform duration-300 hover:scale-105"
+                  alt=""
                 />
                 <PrismicNextImage
                   field={item.img9}
                   imgixParams={{ w: 400, h: 400 }}
                   className="mb-4 h-auto w-full transform rounded-md object-cover transition-transform duration-300 hover:scale-105"
+                  alt=""
                 />
                 <PrismicNextImage
                   field={item.img10}
                   imgixParams={{ w: 400, h: 400 }}
                   className="mb-4 h-auto w-full transform rounded-md object-cover transition-transform duration-300 hover:scale-105"
+                  alt=""
                 />
                 <PrismicNextImage
                   field={item.img11}
                   imgixParams={{ w: 400, h: 400 }}
                   className="mb-4 h-auto w-full transform rounded-md object-cover transition-transform duration-300 hover:scale-105"
+                  alt=""
                 />
                 <PrismicNextImage
                   field={item.img12}
                   imgixParams={{ w: 400, h: 400 }}
                   className="mb-4 h-auto w-full transform rounded-md object-cover transition-transform duration-300 hover:scale-105"
+                  alt=""
                 />
               </div>
             ))}

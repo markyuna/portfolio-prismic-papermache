@@ -61,7 +61,6 @@ iframe {
   position: absolute;
 }
 
-
 @layer utilities {
   .border-gradient {
     @apply rounded-2xl border-8;

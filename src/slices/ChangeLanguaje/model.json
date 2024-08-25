@@ -1,0 +1,16 @@
+{
+  "id": "change_languaje",
+  "type": "SharedSlice",
+  "name": "ChangeLanguaje",
+  "description": "ChangeLanguaje",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": ""
+    }
+  ]
+}
