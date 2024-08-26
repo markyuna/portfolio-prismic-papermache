@@ -25,21 +25,21 @@ export default function Dalle3Image() {
   };
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-3">
-      <h1 className="mt-5 p-2 text-2xl font-bold text-white">
+    <div className="flex flex-col items-center justify-center gap-6 p-4">
+      <h1 className="mt-5 p-2 text-2xl font-bold text-white text-center">
         Créez votre propre sculpture
       </h1>
-      <div className="flex flex-wrap items-center justify-center gap-3">
+      <div className="flex w-full max-w-md flex-col items-center gap-4">
         <input
           type="text"
-          className="w-full rounded-lg p-2"
+          className="w-full rounded-lg p-3 text-black"
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           placeholder="Enter a prompt"
         />
         <button
           type="button"
-          className="w-40 rounded-lg bg-blue-500 p-2 text-white"
+          className="w-full rounded-lg bg-blue-500 p-3 text-white disabled:opacity-50"
           onClick={handleDalle3}
           disabled={loading}
         >
@@ -48,22 +48,20 @@ export default function Dalle3Image() {
       </div>
       {loading && (
         <div className="flex flex-col items-center justify-center gap-3">
-          <h2 className="text-2xl font-bold" style={{ color: "#fff" }}>
-            Loading ...
-          </h2>
-          {error && <p style={{ color: "red" }}>{error}</p>}
+          <h2 className="text-2xl font-bold text-white">Loading...</h2>
+          {error && <p className="text-red-500">{error}</p>}
           <Image
             src={"/Spinner.gif"}
             width={50}
             height={50}
             className="rounded-lg"
             alt="Loading"
-            unoptimized={true}
+            unoptimized
           />
         </div>
       )}
       {aiResult && (
-        <>
+        <div className="flex flex-col items-center gap-4 mt-6">
           <Image
             className="rounded-lg"
             alt="AI Image"
@@ -74,12 +72,11 @@ export default function Dalle3Image() {
           <button
             type="button"
             className="rounded-lg bg-blue-500 p-3 text-white"
-            style={{ marginTop: "1rem" }}
             onClick={() => setAiResult("")}
           >
             Clear
           </button>
-        </>
+        </div>
       )}
     </div>
   );
