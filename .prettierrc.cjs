@@ -1,6 +1,8 @@
 // .prettierrc.cjs
-module.exports = {
-  singleQuote: false,
+const config = {
+  singleQuote: true,
   semi: true,
   plugins: ["prettier-plugin-tailwindcss"],
 };
+
+export default config;

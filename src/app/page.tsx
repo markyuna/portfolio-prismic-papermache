@@ -3,6 +3,7 @@
 // src/app/page.tsx
 import { Metadata } from "next";
 import { SliceZone } from "@prismicio/react";
+import React from "react"; // Import React package
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
