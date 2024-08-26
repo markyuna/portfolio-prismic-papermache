@@ -17,27 +17,6 @@ const orcishOpenAIService = new OrcishOpenAIService({
 });
 
 export async function getDalle3Image(prompt: string) {
-  const retryOptions = {
-    retries: 3,
-    delay: 1000, // délai en millisecondes
-  };
-
-  for (let i = 0; i < retryOptions.retries; i++) {
-    try {
-      const response = await orcishOpenAIService.getDalle3Image(prompt);
-      if (response) {
-        return response;
-      }
-    } catch (error) {
-      if (i < retryOptions.retries - 1) {
-        console.log(`Retrying... (${i + 1}/${retryOptions.retries})`);
-        await new Promise(res => setTimeout(res, retryOptions.delay));
-      } else {
-        console.error("Error generating image:", error);
-        throw error;
-      }
-    }
-  }
   return await orcishOpenAIService.getDalle3Image(prompt);
 }
 

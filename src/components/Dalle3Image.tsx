@@ -54,8 +54,8 @@ export default function Dalle3Image() {
           {error && <p style={{ color: "red" }}>{error}</p>}
           <Image
             src={"/Spinner.gif"}
-            width={80}
-            height={80}
+            width={50}
+            height={50}
             className="rounded-lg"
             alt="Loading"
             unoptimized={true}
@@ -66,7 +66,7 @@ export default function Dalle3Image() {
         <>
           <Image
             className="rounded-lg"
-            alt={"AI Image"}
+            alt="AI Image"
             height={800}
             width={500}
             src={aiResult}

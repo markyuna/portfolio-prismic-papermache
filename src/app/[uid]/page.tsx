@@ -5,6 +5,8 @@ import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 
+import React from "react"; // Import the 'React' package
+
 type Params = { uid: string };
 
 export default async function Page({ params }: { params: Params }) {
