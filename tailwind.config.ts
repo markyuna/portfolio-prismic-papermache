@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography"; // Import the 'typography' package
 
 const config: Config = {
   content: [
@@ -7,7 +9,12 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/slices/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {},
-  plugins: [require("@tailwindcss/typography")],
+  theme: {
+    // Aquí puedes añadir cualquier personalización de tema que necesites
+  },
+  plugins: [
+    typography, // Incluye el plugin de tipografía
+  ],
 };
+
 export default config;

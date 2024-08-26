@@ -4,10 +4,12 @@
 
 import { OrcishOpenAIService } from "orcish-openai-connector";
 
+// Asegúrate de tener la clave API
 if (!process.env.OPENAI_API_KEY) {
   throw new Error("No OPENAI API Key");
 }
 
+// Configura el servicio de OpenAI
 const orcishOpenAIService = new OrcishOpenAIService({
   apiKey: process.env.OPENAI_API_KEY,
   gptModel: "gpt-4",
@@ -16,9 +18,33 @@ const orcishOpenAIService = new OrcishOpenAIService({
   imageModel: "dall-e-3",
 });
 
-export async function getDalle3Image(prompt: string) {
-  return await orcishOpenAIService.getDalle3Image(prompt);
+// Simple caché en memoria
+const cache = new Map<string, string>();
+
+// Función para obtener la imagen de DALL-E 3 con caché y reintentos
+export async function getDalle3Image(prompt: string): Promise<string> {
+  // Intenta obtener la imagen de la caché
+  const cacheKey = `dalle3_${prompt}`;
+  const cachedImage = cache.get(cacheKey);
+
+  if (cachedImage) {
+    return cachedImage;
+  }
+
+  // Si no está en la caché, haz la solicitud
+  try {
+    const response = await orcishOpenAIService.getDalle3Image(prompt);
+    
+    // Guarda la respuesta en la caché antes de devolverla
+    cache.set(cacheKey, response);
+
+    return response;
+  } catch (error) {
+    console.error("Error generating image:", error);
+    throw error;
+  }
 }
+
 
 // "use server";
 
