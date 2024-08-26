@@ -1,6 +1,4 @@
-// src/slices/Experience/index.tsx
 "use client";
-
 import React, { useState } from "react";
 import Bounded from "@/components/Bounded";
 import Heading from "@/components/Heading";
@@ -19,9 +17,7 @@ export type ExperienceProps = SliceComponentProps<Content.ExperienceSlice>;
  * Component for "Experience" Slices.
  */
 const Experience = ({ slice }: ExperienceProps): JSX.Element => {
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
-    null
-  );
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const images = [
@@ -47,9 +43,7 @@ const Experience = ({ slice }: ExperienceProps): JSX.Element => {
     event.stopPropagation();
     if (selectedImageIndex !== null) {
       setSelectedImageIndex((prevIndex) =>
-        prevIndex !== null && prevIndex < images.length - 1
-          ? prevIndex + 1
-          : 0
+        prevIndex !== null && prevIndex < images.length - 1 ? prevIndex + 1 : 0
       );
     }
   };
@@ -58,27 +52,21 @@ const Experience = ({ slice }: ExperienceProps): JSX.Element => {
     event.stopPropagation();
     if (selectedImageIndex !== null) {
       setSelectedImageIndex((prevIndex) =>
-        prevIndex !== null && prevIndex > 0
-          ? prevIndex - 1
-          : images.length - 1
+        prevIndex !== null && prevIndex > 0 ? prevIndex - 1 : images.length - 1
       );
     }
   };
 
   return (
-    <Bounded
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
-    >
+    <Bounded data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
       <Heading as="h3" size="md">
         {slice.primary.heading}
       </Heading>
       {slice.items.map((item, index) => (
-        <div key={item.id} className="mt-5 md:mt-16">
+        <div key={index} className="mt-5 md:mt-16"> {/* Cambié item.id por index */}
           <Heading as="h2" size="sm">
             {item.title}
           </Heading>
-
           <div className="mt-1 flex w-fit items-center gap-1 text-2xl font-semibold tracking-tight text-slate-400">
             <span className="text-3xl font-extralight"></span>{" "}
             <span>{item.institution}</span>
@@ -103,48 +91,49 @@ const Experience = ({ slice }: ExperienceProps): JSX.Element => {
       ))}
       {isModalOpen && selectedImageIndex !== null && (
         <button
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
-        onClick={closeModal}
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            closeModal();
-          }
-        }}
-      >
-        <div
-          className="relative flex items-center justify-center"
-          onClick={(e) => e.stopPropagation()}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
+          onClick={closeModal}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              closeModal();
+            }
+          }}
         >
-          <button
-            onClick={handlePreviousImage}
-            className="absolute left-4 flex h-16 w-16 items-center justify-center rounded-full bg-transparent text-white text-3xl transition-transform transform hover:scale-110"
-            aria-label="Previous Image"
+          <div
+            className="relative flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+            role="presentation"
           >
-            <GrLinkPrevious />
-          </button>
-          <img
-            src={images[selectedImageIndex]?.url ?? ""}
-            alt="Expanded view"
-            className="max-h-[90vh] max-w-[90vw] rounded-lg"
-          />
-          <button
-            onClick={handleNextImage}
-            className="absolute right-4 flex h-16 w-16 items-center justify-center rounded-full bg-transparent text-white text-3xl transition-transform transform hover:scale-110"
-            aria-label="Next Image"
-          >
-            <GrLinkNext />
-          </button>
-          <button
-            onClick={closeModal}
-            className="absolute top-4 right-6 text-white text-4xl transition-transform transform hover:scale-110"
-            aria-label="Close Modal"
-          >
-            &times;
-          </button>
-        </div>
-      </button>
-      
+            <button
+              onClick={handlePreviousImage}
+              className="absolute left-4 flex h-16 w-16 items-center justify-center rounded-full bg-transparent text-white text-3xl transition-transform transform hover:scale-110"
+              aria-label="Previous Image"
+            >
+              <GrLinkPrevious />
+            </button>
+            <img
+              src={images[selectedImageIndex]?.url ?? ""}
+              alt="Expanded view"
+              className="max-h-[90vh] max-w-[90vw] rounded-lg"
+            />
+            <button
+              onClick={handleNextImage}
+              className="absolute right-4 flex h-16 w-16 items-center justify-center rounded-full bg-transparent text-white text-3xl transition-transform transform hover:scale-110"
+              aria-label="Next Image"
+            >
+              <GrLinkNext />
+            </button>
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-6 text-white text-4xl transition-transform transform hover:scale-110"
+              aria-label="Close Modal"
+            >
+              &times;
+            </button>
+          </div>
+        </button>
       )}
     </Bounded>
   );
