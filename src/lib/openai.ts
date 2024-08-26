@@ -14,25 +14,42 @@ const orcishOpenAIService = new OrcishOpenAIService({
   imageModel: "dall-e-3",
 });
 
+async function fetchWithTimeout(url: string, options: RequestInit, timeout = 10000): Promise<Response> {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal,
+    });
+    clearTimeout(id);
+    return response;
+  } catch (error) {
+    clearTimeout(id);
+    if (error instanceof Error && error.name === 'AbortError') {
+      throw new Error('Request timed out');
+    }
+    throw error;
+  }
+}
+
 async function fetchWithRetries(url: string, options: RequestInit, retries = 3, delay = 1000): Promise<Response> {
   for (let i = 0; i < retries; i++) {
     try {
-      const response = await fetch(url, options);
+      const response = await fetchWithTimeout(url, options, 10000);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-      return response; // Aquí es donde se devuelve la respuesta si todo está bien.
+      return response;
     } catch (error) {
       if (i < retries - 1) {
         console.log(`Retrying... (${i + 1}/${retries})`);
-        await new Promise(res => setTimeout(res, delay));
+        await new Promise(res => setTimeout(res, delay * Math.pow(2, i)));  // Exponential backoff
       } else {
-        throw error; // Si estamos en el último intento, lanzamos el error.
+        throw error;
       }
     }
   }
-
-  throw new Error('Unexpected error: All retries failed'); // Esto es para asegurarse de que siempre haya una declaración de retorno.
+  throw new Error('All retries failed');
 }
-
 
 export async function getDalle3Image(prompt: string) {
   try {
@@ -64,6 +81,7 @@ export async function getDalle3Image(prompt: string) {
     throw error;
   }
 }
+
 
 
 
