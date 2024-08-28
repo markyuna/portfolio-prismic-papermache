@@ -8,14 +8,10 @@ if (!process.env.OPENAI_API_KEY) {
 }
 
 // Configuración de OpenAI
-// const configuration = new Configuration({
-//   apiKey: process.env.OPENAI_API_KEY,
-// });
-
-const openai = new OpenAI({apiKey: process.env.OPENAI_API_KEY});
+const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 // Función para manejar solicitudes con tiempo de espera
-async function fetchWithTimeout(url: string, options: RequestInit, timeout = 10000): Promise<Response> {
+async function fetchWithTimeout(url: string, options: RequestInit, timeout = 60000): Promise<Response> { // Aumentar a 60 segundos
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeout);
   try {
@@ -35,10 +31,10 @@ async function fetchWithTimeout(url: string, options: RequestInit, timeout = 100
 }
 
 // Función para manejar reintentos con retroceso exponencial
-async function fetchWithRetries(url: string, options: RequestInit, retries = 3, delay = 3000): Promise<Response> {
+async function fetchWithRetries(url: string, options: RequestInit, retries = 3, delay = 5000): Promise<Response> {
   for (let i = 0; i < retries; i++) {
     try {
-      const response = await fetchWithTimeout(url, options, 10000);
+      const response = await fetchWithTimeout(url, options, 60000); // Usar 60 segundos de timeout aquí también
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       return response;
     } catch (error) {
@@ -56,16 +52,26 @@ async function fetchWithRetries(url: string, options: RequestInit, retries = 3, 
 // Función para obtener la imagen generada por DALL-E 3
 export async function getDalle3Image(prompt: string): Promise<string> {
   try {
-    const response = await openai.images.generate({
-      prompt,
-      n: 1,
-      size: "1024x1024",
-      response_format: "url",
-    });
+    const response = await fetchWithRetries(
+      "https://api.openai.com/v1/images/generations",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+        },
+        body: JSON.stringify({
+          prompt,
+          n: 1,
+          size: "1024x1024",
+          response_format: "url",
+        }),
+      }
+    );
 
-    const imageUrl = response?.data?.[0]?.url;
-    if (imageUrl) {
-      return imageUrl;
+    const data = await response.json();
+    if (data && data.data && data.data[0].url) {
+      return data.data[0].url;
     } else {
       throw new Error("No image URL returned");
     }
@@ -74,6 +80,9 @@ export async function getDalle3Image(prompt: string): Promise<string> {
     throw error;
   }
 }
+
+
+
 
 
 // "use server";
