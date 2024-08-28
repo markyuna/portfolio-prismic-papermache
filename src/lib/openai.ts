@@ -35,7 +35,7 @@ async function fetchWithTimeout(url: string, options: RequestInit, timeout = 100
 }
 
 // Función para manejar reintentos con retroceso exponencial
-async function fetchWithRetries(url: string, options: RequestInit, retries = 3, delay = 1000): Promise<Response> {
+async function fetchWithRetries(url: string, options: RequestInit, retries = 3, delay = 3000): Promise<Response> {
   for (let i = 0; i < retries; i++) {
     try {
       const response = await fetchWithTimeout(url, options, 10000);
