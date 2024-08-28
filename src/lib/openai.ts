@@ -1,17 +1,12 @@
 "use server";
 
-import { OpenAI } from "openai";
-
 // Verifica que la clave de la API esté disponible
 if (!process.env.OPENAI_API_KEY) {
   throw new Error("No OPENAI API Key");
 }
 
-// Configuración de OpenAI
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
 // Función para manejar solicitudes con tiempo de espera
-async function fetchWithTimeout(url: string, options: RequestInit, timeout = 60000): Promise<Response> { // Aumentar a 60 segundos
+async function fetchWithTimeout(url: string, options: RequestInit, timeout = 60000): Promise<Response> {
   const controller = new AbortController();
   const id = setTimeout(() => controller.abort(), timeout);
   try {
@@ -34,7 +29,7 @@ async function fetchWithTimeout(url: string, options: RequestInit, timeout = 600
 async function fetchWithRetries(url: string, options: RequestInit, retries = 3, delay = 5000): Promise<Response> {
   for (let i = 0; i < retries; i++) {
     try {
-      const response = await fetchWithTimeout(url, options, 60000); // Usar 60 segundos de timeout aquí también
+      const response = await fetchWithTimeout(url, options, 60000);
       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       return response;
     } catch (error) {
@@ -80,6 +75,7 @@ export async function getDalle3Image(prompt: string): Promise<string> {
     throw error;
   }
 }
+
 
 
 
