@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ImageField } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
@@ -10,9 +10,11 @@ import usePrefersReducedMotion from "@/hooks/usePrefersReducedMotion";
 export default function Avatar({
   image,
   className,
+  onClick, // Agregamos el prop onClick
 }: {
   image: ImageField;
   className?: string;
+  onClick?: () => void; // Agregamos el prop onClick
 }) {
   const component = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -73,10 +75,14 @@ export default function Avatar({
   }, [prefersReducedMotion]);
 
   return (
-    <div ref={component} className={clsx("relative", className)}>
+    <button 
+      ref={component}
+      className={clsx("relative", className)}
+      onClick={onClick} // Usamos el evento onClick
+      style={{ perspective: "300px", perspectiveOrigin: "100% 100%" }}
+    >
       <div
-        className="avatar aspect-square overflow-hidden rounded-3xl border-2 border-slate-700 opacity-0"
-        style={{ perspective: "300px", perspectiveOrigin: "100% 100%" }}
+        className="avatar aspect-square overflow-hidden rounded-3xl border-2 border-slate-700 opacity-0 cursor-pointer"
       >
         <PrismicNextImage
           field={image}
@@ -84,9 +90,8 @@ export default function Avatar({
           imgixParams={{ q: 90 }}
           alt=""
         />
-
         <div className="highlight absolute inset-0 hidden w-full scale-110 bg-gradient-to-tr from-transparent via-white to-transparent opacity-0 md:block"></div>
       </div>
-    </div>
+    </button>
   );
 }

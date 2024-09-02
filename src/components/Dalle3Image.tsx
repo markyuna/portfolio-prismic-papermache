@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Dalle3Image() {
   const [prompt, setPrompt] = useState("");
-  const [aiResult, setAiResult] = useState("");
+  const [aiResult, setAiResult] = useState<{ url: string; width: number; height: number } | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>("");
 
@@ -65,14 +65,14 @@ export default function Dalle3Image() {
           <Image
             className="rounded-lg"
             alt="AI Image"
-            height={800}
-            width={500}
-            src={aiResult}
+            src={aiResult.url}
+            width={aiResult.width}
+            height={aiResult.height}
           />
           <button
             type="button"
             className="rounded-lg bg-blue-500 p-3 text-white"
-            onClick={() => setAiResult("")}
+            onClick={() => setAiResult(null)}
           >
             Clear
           </button>

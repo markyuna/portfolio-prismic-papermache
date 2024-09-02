@@ -32,6 +32,7 @@
 
 iframe {
   max-width: 100%;
+  height: auto;
 }
 
 /* ///// Styling of the page  ////// */

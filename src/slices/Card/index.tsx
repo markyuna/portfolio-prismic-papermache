@@ -1,3 +1,6 @@
+"use client";
+
+import React, { useState } from 'react';
 import Bounded from "@/components/Bounded";
 import Button from "@/components/Button";
 import Heading from "@/components/Heading";
@@ -14,6 +17,20 @@ export type CardProps = SliceComponentProps<Content.CardSlice>;
  * Component for "Card" Slices.
  */
 const Card = ({ slice }: CardProps): JSX.Element => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const imageUrl = slice.primary.image.url || ""; // Manejar null o undefined para la URL
+  const imageWidth = slice.primary.image.dimensions?.width || 1024; // Asumir una anchura predeterminada si está ausente
+  const imageHeight = slice.primary.image.dimensions?.height || 1024; // Asumir una altura predeterminada si está ausente
+
   return (
     <Bounded
       data-slice-type={slice.slice_type}
@@ -32,12 +49,49 @@ const Card = ({ slice }: CardProps): JSX.Element => {
             />
           </div>
 
-          <Avatar
-            image={slice.primary.image}
-            className="row-start-1 max-w-sm md:col-start-2 md:row-end-3"
-          />
+          <button
+            className="cursor-pointer row-start-1 max-w-sm md:col-start-2 md:row-end-3"
+            onClick={openModal}
+            aria-label="Ampliar imagen de avatar"
+          >
+            <Avatar image={slice.primary.image} />
+          </button>
         </div>
       </div>
+
+      {isModalOpen && imageUrl && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
+          onClick={closeModal}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              closeModal();
+            }
+          }}
+        >
+          <div
+            className="relative flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={imageUrl}
+              alt={slice.primary.image.alt ?? "Avatar Image"}
+              width={imageWidth}
+              height={imageHeight}
+              className="max-h-[90vh] max-w-[90vw] rounded-lg"
+            />
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-6 text-white text-4xl transition-transform duration-300 hover:scale-110"
+              aria-label="Cerrar modal"
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+      )}
     </Bounded>
   );
 };

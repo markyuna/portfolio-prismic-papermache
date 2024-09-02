@@ -1,5 +1,3 @@
-//src/app/next.config.mjs
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -15,13 +13,11 @@ const nextConfig = {
     },
   },
   images: {
-    domains: ["oaidalleapiprodscus.blob.core.windows.net"],
     remotePatterns: [
       {
         protocol: "https",
         hostname: "oaidalleapiprodscus.blob.core.windows.net",
-        port: "",
-        pathname: "/**",
+        pathname: "/**", // Se permiten todas las rutas bajo el dominio especificado
       },
     ],
   },
