@@ -27,10 +27,6 @@ const Card = ({ slice }: CardProps): JSX.Element => {
     setIsModalOpen(false);
   };
 
-  const imageUrl = slice.primary.image.url || ""; // Manejar null o undefined para la URL
-  const imageWidth = slice.primary.image.dimensions?.width || 1024; // Asumir una anchura predeterminada si está ausente
-  const imageHeight = slice.primary.image.dimensions?.height || 1024; // Asumir una altura predeterminada si está ausente
-
   return (
     <Bounded
       data-slice-type={slice.slice_type}
@@ -52,14 +48,15 @@ const Card = ({ slice }: CardProps): JSX.Element => {
           <button
             className="cursor-pointer row-start-1 max-w-sm md:col-start-2 md:row-end-3"
             onClick={openModal}
-            aria-label="Ampliar imagen de avatar"
+            aria-label="Ampliar imagen de avatar" // Accesibilidad: Añadir una descripción para lectores de pantalla
           >
             <Avatar image={slice.primary.image} />
           </button>
         </div>
       </div>
 
-      {isModalOpen && imageUrl && (
+      {/* Modal para mostrar la imagen ampliada */}
+      {isModalOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
           onClick={closeModal}
@@ -76,16 +73,14 @@ const Card = ({ slice }: CardProps): JSX.Element => {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={imageUrl}
+              src={slice.primary.image.url}
               alt={slice.primary.image.alt ?? "Avatar Image"}
-              width={imageWidth}
-              height={imageHeight}
               className="max-h-[90vh] max-w-[90vw] rounded-lg"
             />
             <button
               onClick={closeModal}
               className="absolute top-4 right-6 text-white text-4xl transition-transform duration-300 hover:scale-110"
-              aria-label="Cerrar modal"
+              aria-label="Cerrar modal" // Accesibilidad: Añadir descripción para lectores de pantalla
             >
               &times;
             </button>

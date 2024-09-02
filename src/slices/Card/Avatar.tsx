@@ -75,14 +75,21 @@ export default function Avatar({
   }, [prefersReducedMotion]);
 
   return (
-    <button 
+    <div // Cambiamos de <button> a <div>
       ref={component}
-      className={clsx("relative", className)}
+      className={clsx("relative", className, "cursor-pointer")}
       onClick={onClick} // Usamos el evento onClick
       style={{ perspective: "300px", perspectiveOrigin: "100% 100%" }}
+      role="button" // Añadimos role="button" para mantener accesibilidad
+      tabIndex={0} // Hacemos que el div sea accesible mediante el teclado
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          onClick && onClick(); // Disparamos el evento onClick si se presiona Enter o Espacio
+        }
+      }}
     >
       <div
-        className="avatar aspect-square overflow-hidden rounded-3xl border-2 border-slate-700 opacity-0 cursor-pointer"
+        className="avatar aspect-square overflow-hidden rounded-3xl border-2 border-slate-700 opacity-0"
       >
         <PrismicNextImage
           field={image}
@@ -92,6 +99,6 @@ export default function Avatar({
         />
         <div className="highlight absolute inset-0 hidden w-full scale-110 bg-gradient-to-tr from-transparent via-white to-transparent opacity-0 md:block"></div>
       </div>
-    </button>
+    </div>
   );
 }
