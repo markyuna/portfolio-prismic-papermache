@@ -1,3 +1,4 @@
+import React from "react";
 import { SliceZone } from "@prismicio/react";
 import { Content } from "@prismicio/client";
 
@@ -5,6 +6,7 @@ import { components } from "@/slices";
 import Heading from "@/components/Heading";
 import Bounded from "@/components/Bounded";
 import { formatDate } from "@/utils/formatDate";
+
 
 export default function ContentBody({
   page,

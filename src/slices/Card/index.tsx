@@ -45,13 +45,11 @@ const Card = ({ slice }: CardProps): JSX.Element => {
             />
           </div>
 
-          <button
+          <Avatar
+            image={slice.primary.image}
             className="cursor-pointer row-start-1 max-w-sm md:col-start-2 md:row-end-3"
-            onClick={openModal}
-            aria-label="Ampliar imagen de avatar" // Accesibilidad: Añadir una descripción para lectores de pantalla
-          >
-            <Avatar image={slice.primary.image} />
-          </button>
+            onClick={openModal} // Añade el evento onClick para abrir el modal
+          />
         </div>
       </div>
 
@@ -60,8 +58,8 @@ const Card = ({ slice }: CardProps): JSX.Element => {
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
           onClick={closeModal}
-          role="button"
-          tabIndex={0}
+          role="button" // Add role attribute
+          tabIndex={0} // Add tabIndex attribute
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
               closeModal();
@@ -73,14 +71,13 @@ const Card = ({ slice }: CardProps): JSX.Element => {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={slice.primary.image.url}
+              src={slice.primary.image.url ?? ""}
               alt={slice.primary.image.alt ?? "Avatar Image"}
               className="max-h-[90vh] max-w-[90vw] rounded-lg"
             />
             <button
               onClick={closeModal}
               className="absolute top-4 right-6 text-white text-4xl transition-transform duration-300 hover:scale-110"
-              aria-label="Cerrar modal" // Accesibilidad: Añadir descripción para lectores de pantalla
             >
               &times;
             </button>

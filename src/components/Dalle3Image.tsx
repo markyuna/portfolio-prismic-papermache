@@ -16,7 +16,7 @@ export default function Dalle3Image() {
 
     try {
       const result = await getDalle3Image(prompt);
-      setAiResult(result);
+      setAiResult(result as unknown as { url: string; width: number; height: number });
     } catch (error) {
       setError(`Error al generar la imagen: ${(error as Error).message}`);
     } finally {
