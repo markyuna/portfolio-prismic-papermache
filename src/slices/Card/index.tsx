@@ -71,7 +71,7 @@ const Card = ({ slice }: CardProps): JSX.Element => {
             onClick={(e) => e.stopPropagation()}
           >
             <img
-              src={slice.primary.image.url ?? ""}
+              src={slice.primary.image?.url ?? ""}
               alt={slice.primary.image.alt ?? "Avatar Image"}
               className="max-h-[90vh] max-w-[90vw] rounded-lg"
             />

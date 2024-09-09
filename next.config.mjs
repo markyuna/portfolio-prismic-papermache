@@ -3,7 +3,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["oaidalleapiprodscus.blob.core.windows.net"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'oaidalleapiprodscus.blob.core.windows.net',
+        pathname: '/**',
+      },
+    ],
+  },
+  env: {
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   },
   swcMinify: true,
 };
