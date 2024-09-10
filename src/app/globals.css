@@ -2,13 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-.background-gradient {
-  background: radial-gradient(
-    circle at top center,
-    hsla(222, 80%, 60%, 0.5) 0%,
-    hsla(222, 0%, 0%, 0) 50%,
-    hsla(222, 0%, 0%, 0) 100%
-  );
+@layer utilities {
+  .background-gradient {
+    background: radial-gradient(
+      circle at top center,
+      hsla(222, 80%, 60%, 0.5) 0%,
+      hsla(222, 0%, 0%, 0) 50%,
+      hsla(222, 0%, 0%, 0) 100%
+    );
+  }
 }
 
 
@@ -64,12 +66,7 @@ iframe {
   position: absolute;
 }
 
-@layer utilities {
-  .border-gradient {
-    @apply rounded-2xl border-8;
-    border-image: linear-gradient(45deg, #8a2be2, #00c6ff) 1;
-  }
-}
+
 
 @layer base {
   :root {
