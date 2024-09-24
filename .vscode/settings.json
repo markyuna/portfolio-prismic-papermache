@@ -30,5 +30,8 @@
     "votre",
     "webshop",
     "yoyo"
-  ]
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
+
 }
