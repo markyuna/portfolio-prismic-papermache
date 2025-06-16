@@ -36,17 +36,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      {/* Mueve el fondo oscuro a body para asegurarte de que se aplica correctamente */}
-      <body className={clsx(urbanist.className, "bg-slate-900")}>
+    <html lang="en" className="">
+      <body className={clsx(urbanist.className)}>
         <SpeedInsights />
         <HotjarInit />
         <Analytics />
         <Header />
         {children}
-        {/* Asegúrate de que estos div no interfieran con el color de fondo principal */}
-        <div className="background-gradient absolute inset-0 -z-50 max-h-screen"></div>
-        <div className="pointer-events-none absolute inset-0 -z-40 h-full bg-[url('/noisetexture.jpg')] opacity-20 mix-blend-soft-light"></div>
+        { <div className="background-gradient absolute inset-0 -z-50 max-h-screen" /> }
+        {<div className="pointer-events-none absolute inset-0 -z-40 h-full bg-[url('/noisetexture.jpg')] opacity-20 mix-blend-soft-light"></div> }
         <Toaster position="bottom-center" reverseOrder={false} />
         <PrismicPreview repositoryName={repositoryName} />
         <Footer />
