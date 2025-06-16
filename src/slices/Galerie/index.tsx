@@ -6,23 +6,32 @@ import { SliceComponentProps } from "@prismicio/react";
 import Heading from "@/components/Heading";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { GrLinkPrevious, GrLinkNext } from "react-icons/gr";
+import { ImageField } from "@prismicio/types";
 
-/**
- * Props for `Galerie`.
- */
 export type GalerieProps = SliceComponentProps<Content.GalerieSlice>;
 
-/**
- * Component for "Galerie" Slices.
- */
+// Define the type for the images inside slice.items
+type GalerieItem = {
+  img1?: ImageField;
+  img2?: ImageField;
+  img3?: ImageField;
+  img4?: ImageField;
+  img5?: ImageField;
+  img6?: ImageField;
+  img7?: ImageField;
+  img8?: ImageField;
+  img9?: ImageField;
+  img10?: ImageField;
+  img11?: ImageField;
+  img12?: ImageField;
+};
+
 const Galerie = ({ slice }: GalerieProps): JSX.Element => {
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(
-    null
-  );
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const images = slice.primary.image
-    .flatMap((item) => [
+  const images = slice.items
+    .flatMap((item: GalerieItem) => [
       item.img1,
       item.img2,
       item.img3,
@@ -36,7 +45,7 @@ const Galerie = ({ slice }: GalerieProps): JSX.Element => {
       item.img11,
       item.img12,
     ])
-    .filter((img) => img?.url);
+    .filter((img): img is ImageField => Boolean(img?.url));
 
   const openModal = (index: number) => {
     setSelectedImageIndex(index);
@@ -51,22 +60,14 @@ const Galerie = ({ slice }: GalerieProps): JSX.Element => {
   const handleNextImage = (event: React.MouseEvent) => {
     event.stopPropagation();
     if (selectedImageIndex !== null) {
-      setSelectedImageIndex((prevIndex) =>
-        prevIndex !== null && prevIndex < images.length - 1
-          ? prevIndex + 1
-          : 0
-      );
+      setSelectedImageIndex((prevIndex) => (prevIndex !== null && prevIndex < images.length - 1 ? prevIndex + 1 : 0));
     }
   };
 
   const handlePreviousImage = (event: React.MouseEvent) => {
     event.stopPropagation();
     if (selectedImageIndex !== null) {
-      setSelectedImageIndex((prevIndex) =>
-        prevIndex !== null && prevIndex > 0
-          ? prevIndex - 1
-          : images.length - 1
-      );
+      setSelectedImageIndex((prevIndex) => (prevIndex !== null && prevIndex > 0 ? prevIndex - 1 : images.length - 1));
     }
   };
 
@@ -87,7 +88,7 @@ const Galerie = ({ slice }: GalerieProps): JSX.Element => {
           <div className="mt-4 grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4">
             {images.map((img, index) => (
               <PrismicNextImage
-                key={img?.url} // Use a unique identifier from the image data as the key
+                key={img.url}
                 field={img}
                 imgixParams={{ w: 400, h: 400 }}
                 className="mb-4 h-auto w-full transform rounded-md object-cover transition-transform duration-300 hover:scale-105 cursor-pointer"
@@ -110,8 +111,8 @@ const Galerie = ({ slice }: GalerieProps): JSX.Element => {
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75"
           onClick={closeModal}
-          role="button" // Add role attribute
-          tabIndex={0} // Add tabIndex attribute
+          role="button"
+          tabIndex={0}
           onKeyDown={(e) => {
             if (e.key === "Enter" || e.key === " ") {
               closeModal();
@@ -128,11 +129,11 @@ const Galerie = ({ slice }: GalerieProps): JSX.Element => {
             >
               <GrLinkPrevious />
             </button>
-              <img
-                src={images[selectedImageIndex]?.url ?? ""}
-                alt="Expanded view"
-                className="max-h-[90vh] max-w-[90vw] rounded-lg"
-              />
+            <img
+              src={images[selectedImageIndex]?.url ?? ""}
+              alt="Expanded view"
+              className="max-h-[90vh] max-w-[90vw] rounded-lg"
+            />
             <button
               onClick={handleNextImage}
               className="absolute right-4 flex h-16 w-16 items-center justify-center rounded-full bg-transparent text-white text-3xl transition-transform duration-100 hover:scale-110"

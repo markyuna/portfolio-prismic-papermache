@@ -1,28 +1,31 @@
-import React from "react";
-import { Content, isFilled } from "@prismicio/client";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { Content } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import ContentList from "./ContentList";
 import Bounded from "@/components/Bounded";
 import Heading from "@/components/Heading";
-/**
- * Props for `BlogPostIndex`.
- */
+
 export type ContentIndexProps = SliceComponentProps<Content.ContentIndexSlice>;
 
-/**
- * Component for "ContentIndex" Slices.
- */
-const ContentIndex = async ({
-  slice,
-}: ContentIndexProps): Promise<JSX.Element> => {
-  const client = createClient();
-  const blogPosts = await client.getAllByType("blog_post");
-  const projects = await client.getAllByType("project");
-
+const ContentIndex = ({ slice }: ContentIndexProps) => {
+  const [items, setItems] = useState<any[]>([]);
   const contentType = slice.primary.content_type ?? "Blog";
 
-  const items = slice.primary.content_type === "Blog" ? blogPosts : projects;
+  useEffect(() => {
+    const fetchContent = async () => {
+      const client = createClient();
+      const data =
+        contentType === "Blog"
+          ? await client.getAllByType("blog_post")
+          : await client.getAllByType("project");
+      setItems(data);
+    };
+
+    fetchContent();
+  }, [contentType]);
 
   return (
     <Bounded
@@ -32,11 +35,13 @@ const ContentIndex = async ({
       <Heading size="md" className="mb-8">
         {slice.primary.heading}
       </Heading>
-      {isFilled.richText(slice.primary.description) && (
+
+      {slice.primary.description && (
         <div className="prose-md prose prose-invert mb-10">
           <PrismicRichText field={slice.primary.description} />
         </div>
       )}
+
       <ContentList
         items={items}
         contentType={contentType}

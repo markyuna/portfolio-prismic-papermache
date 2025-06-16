@@ -1,3 +1,4 @@
+//src/slices/Hero/index.tsx
 "use client";
 import React from "react";
 import { useEffect, useRef } from "react";
